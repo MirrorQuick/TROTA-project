@@ -799,3 +799,54 @@ main {
 .fade-in.visible {
     opacity: 1;
 }
+/* Скрываем меню по умолчанию на мобильных устройствах */
+nav {
+    display: none;
+    width: 100%; /* Навигация занимает всю ширину */
+    margin-right: 0;
+    margin-bottom: 1rem;
+    background-color: #4e657a;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+/* Стили для кнопки меню */
+.menu-toggle {
+    background-color: #34495e;
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: none; /* Скрываем кнопку на больших экранах */
+}
+
+.menu-toggle:hover {
+    background-color: #5a6c86;
+}
+
+/* Отображаем кнопку и показываем меню при клике */
+nav.open {
+    display: block;
+}
+
+.menu-toggle {
+    display: block; /* Показываем кнопку на мобильных экранах */
+}
+
+/* Media Query для больших экранов (>= 768px) */
+@media (min-width: 768px) {
+    /* Возвращаем исходные стили для навигации */
+    nav {
+        display: block;
+        width: 200px;
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+
+    /* Скрываем кнопку меню на больших экранах */
+    .menu-toggle {
+        display: none;
+    }
+}
