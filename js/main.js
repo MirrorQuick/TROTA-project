@@ -30,3 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100); // Задержка в 100 миллисекунд
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('open'); // Добавляем/удаляем класс 'open'
+    });
+
+    //  Все остальное JavaScript код
+});
