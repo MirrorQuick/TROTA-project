@@ -316,7 +316,7 @@ main {
 }
 
 .close {
-    color: #aaa;
+    color: #3d4a63;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -398,8 +398,8 @@ main {
 
 .menu a:hover {
     transform: scale(1.1); /* Увеличение размера при наведении */
-    background-color: #809fc4; /* Меняем цвет фона при наведении */
-    color: #fffbd5; /* Меняем цвет текста при наведении */
+    background-color: #303c4b; /* Меняем цвет фона при наведении */
+    color: #3f3e64; /* Меняем цвет текста при наведении */
 }
 .video-item img {
     transition: transform 0.3s ease;
@@ -437,6 +437,84 @@ body {
     background-color: #141b22; /* Синий фон */
     color: #fdee96; /* Желтый текст */
     
+}
+dd p{
+    background-color: #8ba2aa;
+    color: #141b22;
+    padding: 2%;
+    font-size: medium;
+}
+.question-button{
+    width: 100%;
+    font-size: large;
+    align-items: center;
+    padding: 10px;
+    background-color: #466069; /* Светло-серый фон */
+    border: 1px solid #8fa1bd;
+    border-radius: 29px;
+    color: #f0e2b4; /* Темно-серый цвет текста */
+}
+/* Стили для больших кнопок */
+.main-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+#interview-section{
+    font-size: large;
+
+}
+.main-button {
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #495057; /* Темно-серый цвет текста */
+    width: 45%; /* Чтобы кнопки занимали примерно половину ширины */
+}
+
+
+.main-button img {
+    text-align: center;
+    width: 70%;
+    margin-bottom: 10px;
+    border-radius: 50%; /* Круглые иконки */
+    border: 1px solid #3f3e64;
+}
+
+.main-button span {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+/* Стили для таблицы социальных ссылок */
+#social-links table {
+    width: 100%;
+    border-collapse: collapse; /* Убирает отступы между ячейками */
+    margin-top: 20px;
+}
+
+#social-links td {
+    padding: 10px;
+    text-align: center;
+    border: none; /* Убираем границы ячеек */
+}
+
+#social-links img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#social-links a {
+    display: inline-block; /* Чтобы ссылка занимала всю ячейку */
+    text-decoration: none;
+    color: #343a40; /* Темно-серый цвет текста */
+}
+
+#social-links a:hover {
+    color: #7eb2eb; /* Синий цвет при наведении */
 }
 
 p {
@@ -820,7 +898,7 @@ main {
 
 .menu a:hover {
     transform: scale(1.1); /* Увеличение размера при наведении */
-    background-color: #809fc4; /* Меняем цвет фона при наведении */
+    background-color: #4e657a; /* Меняем цвет фона при наведении */
     color: #fffbd5; /* Меняем цвет текста при наведении */
 }
 .video-item img {
@@ -887,4 +965,20 @@ nav.open {
     .menu-toggle {
         display: none;
     }
+}
+input {
+    all: unset;
+    margin-left: 10px;
+    appearance: none;
+    background-color: none;
+    line-height: 0;
+  }
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid #7ecdff;
+    box-shadow:0 0 10px blue;
+    padding-right: 5px;
+    border-radius: 60px;
 }

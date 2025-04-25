@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TROTA_project</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -38,7 +39,7 @@
             <ul class="menu">
                 <li class="fade-in"><a href="series.html"><img src="images/icons/series.png" alt="Серии"><span>Серии</span></a></li>
                 <li class="fade-in"><a href="news.html"><img src="images/icons/news.png" alt="Новости"><span>Новости</span></a></li>
-                <li class="fade-in"><a href="wiki.html"><img src="images/icons/wiki.png" alt="Вики"><span>Вики</span></a></li>
+                <li class="fade-in"><a href="trotapedia.html"><img src="images/icons/wiki.png" alt="Тротапедия"><span>Тротапедия</span></a></li>
                 <li class="fade-in"><a href="books.html"><img src="images/icons/books.png" alt="Книги"><span>Книги</span></a></li>
                 <li class="fade-in"><a href="songs.html"><img src="images/icons/songs.png" alt="Песни"><span>Песни</span></a></li>
                 <li class="fade-in"><a href="fanzone.html"><img src="images/icons/fanzone.png" alt="Фан-зона"><span>Фан-зона</span></a></li>
@@ -62,20 +63,254 @@
                 <div class="description">
                     <h1>Игры</h1>
                     <p id="short-description">
-                        В скором времени вы сможете поиграть
+                        Попробуй не дать Мите вас поймать
                     </p>
                 </div>
             </div>
 
             <main>
-                
+                <div id="game-container">
+                    <canvas id="game-canvas" width=50% height=20%></canvas>
+                    <div id="game-over" style="display: none;">
+                        <h2>Мита вас поймала!</h2>
+                        <p>Рекорд: <span id="score">0</span></p>
+                        <button id="restart-button">Играть снова</button>
+                    </div>
+                </div>
             </main>
+            
+            <script>
+                // Получаем элемент canvas
+                const canvas = document.getElementById('game-canvas');
+                const ctx = canvas.getContext('2d');
+            
+                // Получаем размеры контейнера, а не канваса, для адаптивности
+                const gameContainer = document.getElementById('game-container');
+                let canvasWidth = gameContainer.offsetWidth;
+                let canvasHeight = gameContainer.offsetHeight;
+            
+                // Устанавливаем размеры канваса
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+            
+                // Загрузка изображений
+                const dragonImage = new Image();
+                dragonImage.src = 'images/icons/merch.gif'; // Замените на путь к GIF-анимации дракона
+            
+                const backgroundImage = new Image();
+                backgroundImage.src = 'images/background.png'; // Замените на путь к фоновому изображению
+            
+                const mitaImage = new Image();
+                mitaImage.src = 'images/mita.png'; // Замените на путь к изображению Миты
+            
+                // Игровые объекты
+                const dragon = {
+                    x: 50,
+                    y: canvasHeight / 2,
+                    width: 50,
+                    height: 50,
+                    speed: 5,
+                    collisionWidth: 30,
+                    collisionHeight: 30,
+                    collisionOffsetX: 10,
+                    collisionOffsetY: 10
+                };
+            
+                const mitas = []; // Массив для хранения экземпляров Миты
+                let maxMitas = 3;
+            
+                let score = 0;
+                let gameOver = false;
+            
+                // Обработчик касания для управления драконом
+                canvas.addEventListener('touchstart', (event) => {
+                    event.preventDefault(); // Предотвращаем прокрутку страницы
+                    const touch = event.touches[0];
+                    handleTouch(touch);
+                }, false);
+            
+                canvas.addEventListener('touchmove', (event) => {
+                    event.preventDefault();
+                    const touch = event.touches[0];
+                    handleTouch(touch);
+                }, false);
+            
+                function handleTouch(touch) {
+                    const rect = canvas.getBoundingClientRect();
+                    dragon.x = touch.clientX - rect.left - dragon.width / 2;
+                    dragon.y = touch.clientY - rect.top - dragon.height / 2;
+            
+                    // Ограничиваем движение дракона, чтобы не выходил за пределы экрана
+                    dragon.x = Math.max(0, Math.min(dragon.x, canvasWidth - dragon.width));
+                    dragon.y = Math.max(0, Math.min(dragon.y, canvasHeight - dragon.height));
+    }
+
+    // Отслеживание движения мыши для управления драконом (если играют на компьютере)
+    canvas.addEventListener('mousemove', (event) => {
+        const rect = canvas.getBoundingClientRect();
+        dragon.x = event.clientX - rect.left - dragon.width / 2;
+        dragon.y = event.clientY - rect.top - dragon.height / 2;
+
+        // Ограничиваем движение дракона, чтобы не выходил за пределы экрана
+        dragon.x = Math.max(0, Math.min(dragon.x, canvasWidth - dragon.width));
+        dragon.y = Math.max(0, Math.min(dragon.y, canvasHeight - dragon.height));
+    });
+
+    // Функция для проверки столкновения
+    function checkCollision(rect1, rect2) {
+        const rect1Collision = {
+            x: rect1.x + rect1.collisionOffsetX,
+            y: rect1.y + rect1.collisionOffsetY,
+            width: rect1.collisionWidth,
+            height: rect1.collisionHeight
+        };
+
+        return (
+            rect1Collision.x < rect2.x + rect2.width &&
+            rect1Collision.x + rect1Collision.width > rect2.x &&
+            rect1Collision.y < rect2.y + rect2.height &&
+            rect1Collision.y + rect1Collision.height > rect2.y
+        );
+    }
+
+    // Функция для создания новой Миты
+    function createMita() {
+        const mita = {
+            x: canvasWidth + Math.random() * 200,
+            y: Math.random() * (canvasHeight - 50),
+            width: 30,
+            height: 30,
+            speedX: -2 - Math.random() * 3, // Рандомная скорость по X
+            speedY: (Math.random() - 0.5) * 2, // Рандомная скорость по Y (движение вверх-вниз)
+            image: mitaImage // Используем одну и ту же картинку Миты
+        };
+        mitas.push(mita);
+    }
+
+    // Функция для обновления Мит
+    function updateMitas() {
+        if (mitas.length < maxMitas && Math.random() < 0.01) {
+            createMita(); // Создаем новую Миту с небольшой вероятностью на каждом кадре
+        }
+
+        for (let i = 0; i < mitas.length; i++) {
+            const mita = mitas[i];
+            mita.x += mita.speedX;
+            mita.y += mita.speedY;
+
+            // Отскок от верха и низа
+            if (mita.y < 0 || mita.y > canvasHeight - mita.height) {
+                mita.speedY = -mita.speedY;
+            }
+
+            // Если Мита ушла за экран, удаляем её
+            if (mita.x < -mita.width) {
+                mitas.splice(i, 1);
+                i--;
+                score++;
+            }
+        }
+    }
+
+    // Функция для отрисовки игры
+    function drawGame() {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        // Рисуем фон
+        ctx.drawImage(backgroundImage, 0, 0, canvasWidth, canvasHeight);
+
+        // Рисуем счет
+        ctx.fillStyle = 'white'; // Цвет текста
+        ctx.font = '20px Arial'; // Шрифт и размер текста
+        ctx.fillText('Счет: ' + score, 10, 30); // Текст и координаты
+
+        // Рисуем дракона
+        ctx.drawImage(dragonImage, dragon.x, dragon.y, dragon.width, dragon.height);
+
+        // Обновляем и рисуем Мит
+        updateMitas();
+        for (const mita of mitas) {
+            ctx.drawImage(mita.image, mita.x, mita.y, mita.width, mita.height);
+
+            // Проверяем столкновение
+            if (checkCollision(dragon, mita)) {
+                gameOver = true;
+                document.getElementById('game-over').style.display = 'block';
+                document.getElementById('score').textContent = score;
+            }
+        }
+
+        // Если игра не окончена, продолжаем отрисовку
+        if (!gameOver) {
+            requestAnimationFrame(drawGame);
+        }
+    }
+
+    // Начинаем игру, только когда все изображения загружены
+    let imagesLoaded = 0;
+    const totalImages = 3; // Количество изображений для загрузки
+
+function imageLoaded() {
+    imagesLoaded++;
+    if (imagesLoaded === totalImages) {
+        drawGame(); // Начинаем игру, когда все изображения загружены
+    }
+}
+
+dragonImage.onload = imageLoaded;
+backgroundImage.onload = imageLoaded;
+mitaImage.onload = imageLoaded;
+
+// Обработчик кнопки "Играть снова"
+document.getElementById('restart-button').addEventListener('click', () => {
+    gameOver = false;
+    score = 0;
+    dragon.x = 50;
+    dragon.y = canvasHeight / 2;
+    mitas.length = 0; // Очищаем массив Мит
+    document.getElementById('game-over').style.display = 'none';
+    maxMitas = 3; // Возвращаем исходное количество Мит
+    drawGame();
+});
+
+// Адаптация размеров канваса при изменении размера окна
+function resizeCanvas() {
+    canvasWidth = gameContainer.offsetWidth;
+    canvasHeight = gameContainer.offsetHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    // Обновляем начальную позицию дракона
+    dragon.y = canvasHeight / 2;
+}
+
+window.addEventListener('resize', resizeCanvas);
+
+// Инициализация размеров канваса
+resizeCanvas();
+</script>
+            
+            
+                    
         </div>
     </div>
 
-    <footer>
-        <p>© 2025 TROTA_project. Все права защищены.</p>
-    </footer>
+    <footer id="social-links">
+    <table>
+        <tr>
+            <td><a href="https://vk.com/trota_project"><img src="images\icons\vk.png" alt="ВКонтакте"><span>ВКонтакте</span></a></td>
+            <td><a href="https://t.me/TROTA_project"><img src="images\icons\tg.png" alt="Telegram"><span>Telegram</span></a></td>
+            <td><a href="https://www.youtube.com/@TROTA_project"><img src="images\icons\youtube.png" alt="YouTube"><span>YouTube</span></a></td>
+        </tr>
+        <tr>
+            <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty.png" alt="Boosty"><span>Boosty</span></a></td>
+            <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
+            <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
+        </tr>
+    </table>
+    <br>
+    <p>© 2025 TROTA_project. Все права защищены.</p>
+</footer>
 
     <!-- Модальное окно -->
     <div id="modal" class="modal">
@@ -84,7 +319,9 @@
             <h2>Описание</h2>
             <p>Здесь выходит мультсериал "Тише, дорогая Мита", который подходит для подростков и взрослых (16+).</p>
             <p>Девочка-подросток Мита из малого технического городка чувствует себя очень подавленно и одиноко из-за ссор с отцом. Во время побега ее сбивает фургон двух эксцентричных, но добрых актеров, что помогают людям из больших городов решать проблемы при помощи особой методики – куклотерапии.</p>
-            <p>Ссылки: <a href="#">Телеграм</a>, <a href="#">ВК</a></p>
+            <p>Ссылки: <a href="https://t.me/TROTA_project">Телеграм</a>, <a href="https://vk.com/trota_project">ВК</a>
+            </p>, <a href="https://www.youtube.com/@TROTA_project">Ютуб</a></p>,
+            <a href="https://boosty.to/trota_project">Поддержать</a></p>
             <button id="copy-link-modal">Поделиться сайтом</button>
         </div>
     </div>
