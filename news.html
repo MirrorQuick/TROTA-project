@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="news.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -93,7 +94,27 @@
             </div>
 
             <main>
-                
+                <div id="news-container"></div>
+
+    <script>
+      async function loadNews() {
+        const newsContainer = document.getElementById('news-container');
+        const newsFiles = ['news1.html', 'news2.html']; // Список файлов новостей
+
+        for (const file of newsFiles) {
+          try {
+            const response = await fetch(file);
+            const newsHTML = await response.text();
+            newsContainer.innerHTML += newsHTML; // Добавляем новость в контейнер
+          } catch (error) {
+            console.error(`Ошибка загрузки ${file}: ${error}`);
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadNews);
+    </script>
+                  
             </main>
         </div>
     </div>
@@ -219,5 +240,30 @@
     </script>
     <script src="js/main.js"></script>
     <script src="js/profile.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const quizOptions = document.querySelectorAll('.quiz-option');
+      
+          quizOptions.forEach(option => {
+            option.addEventListener('click', function() {
+              const isCorrect = this.dataset.answer === 'true';
+              const feedbackElement = this.closest('.quiz').querySelector('.quiz-feedback');
+      
+              // Сбрасываем стили с других кнопок
+              quizOptions.forEach(o => {
+                o.classList.remove('correct', 'incorrect');
+              });
+      
+              if (isCorrect) {
+                this.classList.add('correct');
+                feedbackElement.textContent = 'Верно!';
+              } else {
+                this.classList.add('incorrect');
+                feedbackElement.textContent = 'Неверно. Попробуйте еще раз.';
+              }
+            });
+          });
+        });
+      </script>
 </body>
 </html>
