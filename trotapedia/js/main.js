@@ -410,6 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 const questionButtons = document.querySelectorAll('.question-button');
 
 questionButtons.forEach(button => {
@@ -423,10 +424,3 @@ questionButtons.forEach(button => {
     });
 });
 
-const rulesOfAbyssLink = document.getElementById('rules-of-abyss-link');
-const rulesOfAbyssPopup = document.getElementById('rules-of-abyss-popup');
-
-rulesOfAbyssLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Предотвратить переход по ссылке
-    rulesOfAbyssPopup.style.display = rulesOfAbyssPopup.style.display === 'none' ? 'block' : 'none';
-});
