@@ -46,8 +46,7 @@ ul {
 }
 
 header{
-    position: sticky;
-    top: 0;
+
     background-color: var(--primary-color);
     padding: 0.5rem 0;
     z-index: 100;
@@ -982,3 +981,105 @@ input {
     padding-right: 5px;
     border-radius: 60px;
 }
+#profile-modal .modal-content {
+    background-color: #222831; /* Темно-синий фон */
+    color: #ffffff; /* Белый текст */
+    border: 1px solid #393e46; /* Более темная граница */
+}
+
+#profile-modal label {
+    color: #ffffff; /* Белый цвет для лейблов */
+}
+
+#profile-modal input[type="text"],
+#profile-modal input[type="number"],
+#profile-modal input[type="color"],
+#profile-modal select {
+    background-color: #393e46; /* Более темный фон для полей ввода */
+    color: #ffffff; /* Белый цвет для текста в полях ввода */
+    border: 1px solid #222831; /* Темная граница для полей ввода */
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Важно, чтобы padding не увеличивал ширину */
+}
+
+/* Стили для кнопок */
+#profile-modal button, #logout-button, #download-profile{
+    background-color: #4070a7; /* Яркий синий цвет для кнопок */
+    color: #ffffff; /* Белый цвет текста на кнопках */
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px; /* Закругленные углы */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
+}
+
+#profile-modal button:hover {
+    background-color: #26484d; /* Более темный синий цвет при наведении */
+}
+
+/* Стили для кнопки закрытия модального окна */
+#profile-modal .close {
+    color: #ffffff; /* Белый цвет для крестика */
+}
+
+#profile-modal .close:hover,
+#profile-modal .close:focus {
+    color: #cccccc; /* Более светлый цвет при наведении */
+}
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(40, 54, 75, 0.445);
+        }
+
+        .modal-content {
+            background-color: #333d4d;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+        }
+
+        .close {
+            color: #252f42;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .profile-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-block;
+        border: 2px solid transparent; /* Изначально прозрачная рамка */
+    }
+
+    .profile-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    header{
+        background-color: var(--primary-color);
+        padding: 0.5rem 0;
+        z-index: 100;
+    }

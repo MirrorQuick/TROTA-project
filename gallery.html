@@ -120,6 +120,62 @@
             <button id="copy-link-modal">Поделиться сайтом</button>
         </div>
     </div>
+    <!-- Модальное окно для профиля -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="profile-modal-close">&times;</span>
+            <h2>Создание профиля</h2>
+            <form id="profile-form">
+                <label for="name">Имя:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="age">Возраст:</label><br>
+                <input type="number" id="age" name="age"><br><br>
+
+                <label for="photo">Фото профиля:</label><br>
+                <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+
+                <label for="world">Выберите мир:</label><br>
+                <select id="world" name="world">
+                    <option value="books">Книги (Флагеба)</option>
+                    <option value="series">Сериал (Техно)</option>
+                </select><br><br>
+
+                <div id="books-options" style="display: none;">
+                    <label for="element">Стихия:</label><br>
+                    <input type="text" id="element" name="element"><br>
+                    <p>Ваша раса: <span id="race"></span></p><br>
+                </div>
+
+                <div id="series-options" style="display: none;">
+                    <label for="color">Любимый цвет для рамки профиля:</label><br>
+                    <input type="color" id="color" name="color" value="#000000"><br><br>
+                </div>
+
+                <label for="character">Выберите персонажа:</label><br>
+                <select id="character" name="character">
+                    <option value="Mitaella">Митаэлла</option>
+                    <option value="Pavel">Павел</option>
+                    <option value="Polina">Полина</option>
+                    <option value="Lelya">Лёля</option>
+                    <option value="Kamilla">Камилла</option>
+                    <option value="Vano">Вано</option>
+                    <option value="Don Grigoryev">Дон Григорьев</option>
+                    <option value="Yasherka">Ящерка</option>
+                    <option value="Limmanuel">Лиммануэль</option>
+                    <option value="Nina">Нина</option>
+                    <option value="Malvina">Мальвина</option>
+                    <option value="Adelaida">Аделаида</option>
+                    <option value="Teo">Тео</option>
+                    <option value="Loki">Локи</option>
+                </select><br><br>
+
+                <button type="button" id="save-profile">Сохранить профиль</button>
+                <button type="button" id="load-profile">Загрузить профиль</button>
+
+            </form>
+        </div>
+    </div>
 
     <script>
         const showMoreLink = document.getElementById('show-more');
@@ -154,5 +210,6 @@
         });
     </script>
     <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>

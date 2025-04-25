@@ -9,22 +9,31 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <script type="text/javascript">
+        (function(m, e, t, r, i, k, a) {
+            m[i] = m[i] || function() {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(101394551, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/101394551" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        ym(101394551, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/101394551" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <header>
@@ -42,11 +51,19 @@
                         <img src="images/icons/search.png" alt="Поиск">
                     </button>
                 </div>
-                <a href="#">Войти</a>
+                <a href="#" id="login-link">Войти</a>
+                <div id="profile-container">
+                    <div class="profile-circle">
+                        <img id="profile-image" src="" alt="Ваш профиль">
+                    </div>
+                    <span id="profile-name"></span>
+                    <button id="logout-button">Выйти</button>
+                    <button type="button" id="download-profile">Скачать профиль</button>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
-<script src="js/main.js"></script>
+    </header>
+    <script src="js/main.js"></script>
     <div class="banner">
         <img src="images/banner.png" alt="Баннер TROTA_project">
     </div>
@@ -67,80 +84,81 @@
                 <li class="fade-in"><a href="schedule.html"><img src="images/icons/schedule.gif" alt="График выхода"><span>График</span></a></li>
                 <li class="fade-in"><a href="gallery.html"><img src="images/icons/gallery.png" alt="Галерея"><span>Галерея</span></a></li>
                 <li class="fade-in"><a href="feedback.html"><img src="images/icons/feedback.png" alt="Обратная связь"><span>Обратная связь</span></a></li>
-                <li class="fade-in"><a href="creators.html"><img src="images/icons/creators.gif" alt="О создателях"><span>Создатели</span></a></li>
-            </ul>
-        </nav>
-
-        <div class="main-content">
-            <div class="info-block">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo.png" alt="Логотип TROTA_project">
-                    </a>
-                </div>
-                <div class="description">
-                    <h1>Тише, дорогая Мита</h1>
-                    <p id="short-description">
-                        Здесь выходит мультсериал "Тише, дорогая Мита", который подходит для подростков и взрослых (16+).
-                        <a href="#" id="show-more">Еще</a>
-                    </p>
-                </div>
-            </div>
-
-            <main>
-                <!-- Здесь будет контент главной страницы -->
-                <h2>Последние видео</h2>
-                <div class="video-grid">
-                    <!-- Пример видео -->
-                    <div class="video-item" width="90%">
-                        <div class="video-container">
-                            <iframe src="https://vk.com/video_ext.php?oid=-211078761&id=456239066&hd=1"
-                                    frameborder="0" allowfullscreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                        </div>
-                        
-                        <style>
-                        .video-container {
-                            position: relative;
-                            width: 100%; /* Занимает всю доступную ширину родительского элемента */
-                            padding-bottom: 56.25%; /* Соотношение сторон 16:9 (высота = 9/16 * ширина) */
-                            height: 0;
-                            overflow: hidden;
-                        }
-                        
-                        .video-container iframe {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                        }
-                        </style>
-                        <h3>ПЕРВАЯ СЕРИЯ - ВОЛШЕБНОЕ ШОУ | ТИШЕ, ДОРОГАЯ МИТА</h3>
-                            <p>Это был вызов создать серию с полного нуля за месяц! Мною были заново придуман весь сюжет, создан аниматик, все риги и 130+ фонов! Это был подвиг.
-                                Часть задач не успевая я доверила своим друзьям, и потратила почти 15 тысяч на песню, озвучку и прочее. Я очень старалась сделать ее так круто как могу, наливайте чайок, я надеюсь, вам она понравится!
-                            </p>
+                <li class="fade-in"><a href="
+                    creators.html"><img src="images/icons/creators.gif" alt="О создателях"><span>Создатели</span></a></li>
+                </ul>
+            </nav>
+    
+            <div class="main-content">
+                <div class="info-block">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.png" alt="Логотип TROTA_project">
+                        </a>
+                    </div>
+                    <div class="description">
+                        <h1>Тише, дорогая Мита</h1>
+                        <p id="short-description">
+                            Здесь выходит мультсериал "Тише, дорогая Мита", который подходит для подростков и взрослых (16+).
+                            <a href="#" id="show-more">Еще</a>
+                        </p>
                     </div>
                 </div>
-            </main>
+    
+                <main>
+                    <!-- Здесь будет контент главной страницы -->
+                    <h2>Последние видео</h2>
+                    <div class="video-grid">
+                        <!-- Пример видео -->
+                        <div class="video-item" width="90%">
+                            <div class="video-container">
+                                <iframe src="https://vk.com/video_ext.php?oid=-211078761&id=456239066&hd=1"
+                                        frameborder="0" allowfullscreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                            </div>
+                            
+                            <style>
+                            .video-container {
+                                position: relative;
+                                width: 100%; /* Занимает всю доступную ширину родительского элемента */
+                                padding-bottom: 56.25%; /* Соотношение сторон 16:9 (высота = 9/16 * ширина) */
+                                height: 0;
+                                overflow: hidden;
+                            }
+                            
+                            .video-container iframe {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            </style>
+                            <h3>ПЕРВАЯ СЕРИЯ - ВОЛШЕБНОЕ ШОУ | ТИШЕ, ДОРОГАЯ МИТА</h3>
+                                <p>Это был вызов создать серию с полного нуля за месяц! Мною были заново придуман весь сюжет, создан аниматик, все риги и 130+ фонов! Это был подвиг.
+                                    Часть задач не успевая я доверила своим друзьям, и потратила почти 15 тысяч на песню, озвучку и прочее. Я очень старалась сделать ее так круто как могу, наливайте чайок, я надеюсь, вам она понравится!
+                                </p>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </div>
-    </div>
-
-    <footer id="social-links">
-    <table>
-        <tr>
-            <td><a href="https://vk.com/trota_project"><img src="images\icons\vk.png" alt="ВКонтакте"><span>ВКонтакте</span></a></td>
-            <td><a href="https://t.me/TROTA_project"><img src="images\icons\tg.png" alt="Telegram"><span>Telegram</span></a></td>
-            <td><a href="https://www.youtube.com/@TROTA_project"><img src="images\icons\youtube.png" alt="YouTube"><span>YouTube</span></a></td>
-        </tr>
-        <tr>
-            <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty.png" alt="Boosty"><span>Boosty</span></a></td>
-            <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
-            <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
-        </tr>
-    </table>
-    <br>
-    <p>© 2025 TROTA_project. Все права защищены.</p>
-</footer>
+    
+        <footer id="social-links">
+        <table>
+            <tr>
+                <td><a href="https://vk.com/trota_project"><img src="images\icons\vk.png" alt="ВКонтакте"><span>ВКонтакте</span></a></td>
+                <td><a href="https://t.me/TROTA_project"><img src="images\icons\tg.png" alt="Telegram"><span>Telegram</span></a></td>
+                <td><a href="https://www.youtube.com/@TROTA_project"><img src="images\icons\youtube.png" alt="YouTube"><span>YouTube</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty.png" alt="Boosty"><span>Boosty</span></a></td>
+                <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
+                <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
+            </tr>
+        </table>
+        <br>
+        <p>© 2025 TROTA_project. Все права защищены.</p>
+    </footer>
 
     <!-- Модальное окно -->
     <div id="modal" class="modal">
@@ -163,6 +181,63 @@
                     </tr>
                 </table>
             <button id="copy-link-modal">Поделиться сайтом</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для профиля -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="profile-modal-close">&times;</span>
+            <h2>Создание профиля</h2>
+            <form id="profile-form">
+                <label for="name">Имя:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="age">Возраст:</label><br>
+                <input type="number" id="age" name="age"><br><br>
+
+                <label for="photo">Фото профиля:</label><br>
+                <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+
+                <label for="world">Выберите мир:</label><br>
+                <select id="world" name="world">
+                    <option value="books">Книги (Флагеба)</option>
+                    <option value="series">Сериал (Техно)</option>
+                </select><br><br>
+
+                <div id="books-options" style="display: none;">
+                    <label for="element">Стихия:</label><br>
+                    <input type="text" id="element" name="element"><br>
+                    <p>Ваша раса: <span id="race"></span></p><br>
+                </div>
+
+                <div id="series-options" style="display: none;">
+                    <label for="color">Любимый цвет для рамки профиля:</label><br>
+                    <input type="color" id="color" name="color" value="#000000"><br><br>
+                </div>
+
+                <label for="character">Выберите персонажа:</label><br>
+                <select id="character" name="character">
+                    <option value="Mitaella">Митаэлла</option>
+                    <option value="Pavel">Павел</option>
+                    <option value="Polina">Полина</option>
+                    <option value="Lelya">Лёля</option>
+                    <option value="Kamilla">Камилла</option>
+                    <option value="Vano">Вано</option>
+                    <option value="Don Grigoryev">Дон Григорьев</option>
+                    <option value="Yasherka">Ящерка</option>
+                    <option value="Limmanuel">Лиммануэль</option>
+                    <option value="Nina">Нина</option>
+                    <option value="Malvina">Мальвина</option>
+                    <option value="Adelaida">Аделаида</option>
+                    <option value="Teo">Тео</option>
+                    <option value="Loki">Локи</option>
+                </select><br><br>
+
+                <button type="button" id="save-profile">Сохранить профиль</button>
+                <button type="button" id="load-profile">Загрузить профиль</button>
+
+            </form>
         </div>
     </div>
 
@@ -198,5 +273,7 @@
                 });
         });
     </script>
+    <script src="js/profile.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
