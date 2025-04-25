@@ -95,25 +95,6 @@
 
             <main>
                 <div id="news-container"></div>
-
-    <script>
-      async function loadNews() {
-        const newsContainer = document.getElementById('news-container');
-        const newsFiles = ['news1.html', 'news2.html']; // Список файлов новостей
-
-        for (const file of newsFiles) {
-          try {
-            const response = await fetch(file);
-            const newsHTML = await response.text();
-            newsContainer.innerHTML += newsHTML; // Добавляем новость в контейнер
-          } catch (error) {
-            console.error(`Ошибка загрузки ${file}: ${error}`);
-          }
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', loadNews);
-    </script>
                   
             </main>
         </div>
