@@ -98,4 +98,76 @@
     margin-top: 10px;
     font-family: monospace;
   }
-  
+
+    main {
+      width: 80%; /* Занимает 80% ширины экрана */
+      max-width: 1200px; /* Максимальная ширина */
+      margin: 0 auto; /* Центрирование */
+      padding: 20px;
+      background-color: #15202b; /* Белый фон main */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    }
+
+    /* Стили для контейнера постов (вертикальный) */
+    #telegram-posts {
+      margin-bottom: 20px;
+    }
+
+    /* Стили для отдельного поста (с вертикальной прокруткой) */
+    .post-container {
+      width: 60%; /* Занимает 60% ширины main */
+      margin: 0 auto 20px; /* Центрирование и отступ снизу */
+      border-radius: 5px;
+      padding: 10px;
+      box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+      height: 300px; /* Фиксированная высота */
+      overflow-y: auto; /* Вертикальная прокрутка */
+    }
+
+    /* Стили для кнопок пагинации */
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 8px 16px;
+      margin: 5px;
+      border: none;
+      background-color: #8596CF;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease; /* Плавный переход цвета */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень */
+    }
+
+    .pagination button:hover {
+      background-color: #6377b3; /* Затемнение при наведении */
+    }
+
+    .pagination button:focus {
+      outline: none; /* Убираем обводку при фокусе */
+      box-shadow: 0 0 5px rgba(133, 150, 207, 0.5); /* Свечение при фокусе */
+    }
+
+    /* Медиа-запрос для мобильных устройств */
+    @media (max-width: 768px) {
+      main {
+        width: 100%; /* Занимаем почти всю ширину экрана на мобильных */
+      }
+
+      .post-container {
+        width: 100%; /* Занимаем 90% ширины main на мобильных */
+        height: 100%; /* Увеличиваем высоту на мобильных */
+    }
+
+      .pagination button {
+        padding: 6px 12px; /* Уменьшаем размер кнопок на мобильных */
+        margin: 3px;
+      }
+      #telegram-posts {
+      overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+    }
+    }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости</title>
     <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="css\news.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://trota-project.ru/news.html">
     <!-- Yandex.Metrika counter -->
@@ -25,81 +25,6 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/101394551" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-  <style>
-
-    main {
-      width: 80%; /* Занимает 80% ширины экрана */
-      max-width: 1200px; /* Максимальная ширина */
-      margin: 0 auto; /* Центрирование */
-      padding: 20px;
-      background-color: #15202b; /* Белый фон main */
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
-    }
-
-    /* Стили для контейнера постов (вертикальный) */
-    #telegram-posts {
-      margin-bottom: 20px;
-    }
-
-    /* Стили для отдельного поста (с вертикальной прокруткой) */
-    .post-container {
-      width: 60%; /* Занимает 60% ширины main */
-      margin: 0 auto 20px; /* Центрирование и отступ снизу */
-      border-radius: 5px;
-      padding: 10px;
-      box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
-      height: 300px; /* Фиксированная высота */
-      overflow-y: auto; /* Вертикальная прокрутка */
-    }
-
-    /* Стили для кнопок пагинации */
-    .pagination {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .pagination button {
-      padding: 8px 16px;
-      margin: 5px;
-      border: none;
-      background-color: #8596CF;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease; /* Плавный переход цвета */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень */
-    }
-
-    .pagination button:hover {
-      background-color: #6377b3; /* Затемнение при наведении */
-    }
-
-    .pagination button:focus {
-      outline: none; /* Убираем обводку при фокусе */
-      box-shadow: 0 0 5px rgba(133, 150, 207, 0.5); /* Свечение при фокусе */
-    }
-
-    /* Медиа-запрос для мобильных устройств */
-    @media (max-width: 768px) {
-      main {
-        width: 100%; /* Занимаем почти всю ширину экрана на мобильных */
-      }
-
-      .post-container {
-        width: 100%; /* Занимаем 90% ширины main на мобильных */
-        height: 100%; /* Увеличиваем высоту на мобильных */
-    }
-
-      .pagination button {
-        padding: 6px 12px; /* Уменьшаем размер кнопок на мобильных */
-        margin: 3px;
-      }
-      #telegram-posts {
-      overflow-x: hidden; /* Убираем горизонтальную прокрутку */
-    }
-    }
-  </style>
 </head>
 <body>
     <header>
@@ -178,85 +103,7 @@
                     <!-- Кнопки для страниц будут добавлены сюда -->
                   </div>
                 
-                  <script>
-                    const container = document.getElementById('telegram-posts');
-                    const channel = 'TROTA_project';
-                    const postsPerPage = 5;
-                
-                    // **ВАЖНО: массив списка номеров постов**
-                    const availablePosts = [
-                    1521, 1520, 1518, 1509, 1501, 1493, 1489, 1478, 1475, 1472, 1469, 1449,
-  1445, 1440, 1435, 1430, 1427, 1426, 1414, 1406, 1405, 1404,
-  1403, 1400, 1396, 1395, 1380, 1372, 1367, 1329, 1318, 1311,
-  1310, 1305, 1304, 1303, 1301, 1298, 1295, 1290, 1289, 1280,
-  1279, 1277, 1271, 1270, 1268, 1249, 1244, 1241, 1239, 1237,
-  1235, 1234, 1231, 1229, 1228, 1226, 1224, 1221, 1219, 1212,
-  1167, 1163, 1152, 1148, 1017, 987, 966, 964, 938, 936,
-  931, 915, 909, 900, 896, 889, 881, 870, 868, 857
-];
-                
-const paginationContainer = document.querySelector('.pagination');
-    let totalPages = Math.ceil(availablePosts.length / postsPerPage); // Общее количество страниц
-
-    function createPostScripts(postNumber) {
-      const postScript = document.createElement('script');
-      postScript.async = true;
-      postScript.src = "https://telegram.org/js/telegram-widget.js?22";
-      postScript.dataset.telegramPost = `${channel}/${postNumber}`;
-      postScript.dataset.width = "100%";
-      postScript.dataset.color = "8596CF";
-      postScript.dataset.dark = "1";
-
-      const discussionScript = document.createElement('script');
-      discussionScript.async = true;
-      discussionScript.src = "https://telegram.org/js/telegram-widget.js?22";
-      discussionScript.dataset.telegramDiscussion = `${channel}/${postNumber}`;
-      discussionScript.dataset.commentsLimit = "5";
-      discussionScript.dataset.color = "8596CF";
-      discussionScript.dataset.dark = "1";
-
-      return [postScript, discussionScript];
-    }
-
-    function loadPage(pageNumber) {
-      container.innerHTML = ''; // Очищаем контейнер
-
-      const startIndex = (pageNumber - 1) * postsPerPage;
-      const endIndex = Math.min(startIndex + postsPerPage, availablePosts.length);
-
-      // Отображаем посты в прямом порядке (с начала массива)
-      for (let i = startIndex; i < endIndex; i++) {
-        const postNumber = availablePosts[i];
-
-        // Создаем контейнер для поста
-        const postContainer = document.createElement('div');
-        postContainer.classList.add('post-container'); // Добавляем класс для стилизации
-
-        const [postScript, discussionScript] = createPostScripts(postNumber);
-        postContainer.appendChild(postScript);
-        postContainer.appendChild(discussionScript);
-
-        container.appendChild(postContainer); // Добавляем контейнер поста в главный контейнер
-      }
-    }
-
-    function createPaginationButtons() {
-      paginationContainer.innerHTML = ''; // Очищаем кнопки пагинации
-
-      for (let i = 1; i <= totalPages; i++) {
-        const button = document.createElement('button');
-        button.innerText = i;
-        button.addEventListener('click', () => {
-          loadPage(i);
-        });
-        paginationContainer.appendChild(button);
-      }
-    }
-
-    // Инициализация:
-    createPaginationButtons(); // Создаем кнопки пагинации
-    loadPage(1); // Загружаем первую страницу
-  </script>
+                  <script src="js\news.js"></script>
   
             </main>
         </div>
@@ -348,65 +195,7 @@ const paginationContainer = document.querySelector('.pagination');
             </form>
         </div>
     </div>
-
-    <script>
-        const showMoreLink = document.getElementById('show-more');
-        const modal = document.getElementById('modal');
-        const closeBtn = document.querySelector('.close');
-        const copyLinkButtonModal = document.getElementById('copy-link-modal');
-
-        showMoreLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Предотвращаем переход по ссылке
-            modal.style.display = 'block'; // Показываем модальное окно
-        });
-
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none'; // Закрываем модальное окно
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none'; // Закрываем модальное окно при клике вне его
-            }
-        });
-
-       copyLinkButtonModal.addEventListener('click', function() {
-            navigator.clipboard.writeText(window.location.href)
-                .then(() => {
-                    alert('Ссылка скопирована!');
-                })
-                .catch(err => {
-                    console.error('Не удалось скопировать ссылку: ', err);
-                    alert('Не удалось скопировать ссылку (браузер не поддерживает)');
-                });
-        });
-    </script>
     <script src="js/main.js"></script>
     <script src="js/profile.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const quizOptions = document.querySelectorAll('.quiz-option');
-      
-          quizOptions.forEach(option => {
-            option.addEventListener('click', function() {
-              const isCorrect = this.dataset.answer === 'true';
-              const feedbackElement = this.closest('.quiz').querySelector('.quiz-feedback');
-      
-              // Сбрасываем стили с других кнопок
-              quizOptions.forEach(o => {
-                o.classList.remove('correct', 'incorrect');
-              });
-      
-              if (isCorrect) {
-                this.classList.add('correct');
-                feedbackElement.textContent = 'Верно!';
-              } else {
-                this.classList.add('incorrect');
-                feedbackElement.textContent = 'Неверно. Попробуйте еще раз.';
-              }
-            });
-          });
-        });
-      </script>
 </body>
 </html>
