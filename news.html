@@ -25,6 +25,62 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/101394551" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<style>
+    /* Общие стили */
+
+    main {
+      width: 80%; /* Занимает 80% ширины экрана */
+      max-width: 1200px; /* Максимальная ширина */
+      margin: 0 auto; /* Центрирование */
+      padding: 20px;
+      background-color: #15202b; /* Белый фон main */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    }
+
+    /* Стили для контейнера постов (вертикальный) */
+    #telegram-posts {
+      margin-bottom: 20px;
+    }
+
+    /* Стили для отдельного поста (с вертикальной прокруткой) */
+    .post-container {
+      width: 60%; /* Занимает 60% ширины main */
+      margin: 0 auto 20px; /* Центрирование и отступ снизу */
+      border-radius: 5px;
+      padding: 10px;
+      box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+      height: 300px; /* Фиксированная высота */
+      overflow-y: auto; /* Вертикальная прокрутка */
+    }
+
+    /* Стили для кнопок пагинации */
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 8px 16px;
+      margin: 5px;
+      border: none;
+      background-color: #8596CF;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease; /* Плавный переход цвета */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень */
+    }
+
+    .pagination button:hover {
+      background-color: #6377b3; /* Затемнение при наведении */
+    }
+
+    .pagination button:focus {
+      outline: none; /* Убираем обводку при фокусе */
+      box-shadow: 0 0 5px rgba(133, 150, 207, 0.5); /* Свечение при фокусе */
+    }
+  </style>
 </head>
 <body>
     <header>
@@ -95,20 +151,93 @@
             </div>
 
             <main>
-                <div id="news-container"></div>
-<div class="news-item">
-  <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="TROTA_project/1301" data-width="100%" data-color="8596CF" data-dark="1"></script>
-  <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="TROTA_project/1301" data-comments-limit="5" data-color="8596CF" data-dark="1"></script>
-  
-  <div class="news-item">
-    <h2 class="news-title">Заголовок новости 2</h2>
-    <p class="news-description">
-      Описание новости 2. Эта новость без картинки.  Можно добавить больше информации.
-    </p>
-    <div class="news-attachment">
-      <a href="#">Ссылка на викторину или вложение</a>
-    </div>
-  </div>
+                <div id="telegram-posts">
+                    <!-- Сюда будут добавляться посты -->
+                  </div>
+                
+                  <div class="pagination">
+                    <!-- Кнопки для страниц будут добавлены сюда -->
+                  </div>
+                
+                  <script>
+                    const container = document.getElementById('telegram-posts');
+                    const channel = 'TROTA_project';
+                    const postsPerPage = 5;
+                
+                    // **ВАЖНО: Замените этот массив на свой список номеров постов**
+                    const availablePosts = [
+                    1521, 1520, 1518, 1509, 1501, 1493, 1489, 1478, 1475, 1472, 1469, 1449,
+  1445, 1440, 1435, 1430, 1427, 1426, 1414, 1406, 1405, 1404,
+  1403, 1400, 1396, 1395, 1380, 1372, 1367, 1329, 1318, 1311,
+  1310, 1305, 1304, 1303, 1301, 1298, 1295, 1290, 1289, 1280,
+  1279, 1277, 1271, 1270, 1268, 1249, 1244, 1241, 1239, 1237,
+  1235, 1234, 1231, 1229, 1228, 1226, 1224, 1221, 1219, 1212,
+  1167, 1163, 1152, 1148, 1017, 987, 966, 964, 938, 936,
+  931, 915, 909, 900, 896, 889, 881, 870, 868, 857
+];
+                
+const paginationContainer = document.querySelector('.pagination');
+    let totalPages = Math.ceil(availablePosts.length / postsPerPage); // Общее количество страниц
+
+    function createPostScripts(postNumber) {
+      const postScript = document.createElement('script');
+      postScript.async = true;
+      postScript.src = "https://telegram.org/js/telegram-widget.js?22";
+      postScript.dataset.telegramPost = `${channel}/${postNumber}`;
+      postScript.dataset.width = "100%";
+      postScript.dataset.color = "8596CF";
+      postScript.dataset.dark = "1";
+
+      const discussionScript = document.createElement('script');
+      discussionScript.async = true;
+      discussionScript.src = "https://telegram.org/js/telegram-widget.js?22";
+      discussionScript.dataset.telegramDiscussion = `${channel}/${postNumber}`;
+      discussionScript.dataset.commentsLimit = "5";
+      discussionScript.dataset.color = "8596CF";
+      discussionScript.dataset.dark = "1";
+
+      return [postScript, discussionScript];
+    }
+
+    function loadPage(pageNumber) {
+      container.innerHTML = ''; // Очищаем контейнер
+
+      const startIndex = (pageNumber - 1) * postsPerPage;
+      const endIndex = Math.min(startIndex + postsPerPage, availablePosts.length);
+
+      // Отображаем посты в прямом порядке (с начала массива)
+      for (let i = startIndex; i < endIndex; i++) {
+        const postNumber = availablePosts[i];
+
+        // Создаем контейнер для поста
+        const postContainer = document.createElement('div');
+        postContainer.classList.add('post-container'); // Добавляем класс для стилизации
+
+        const [postScript, discussionScript] = createPostScripts(postNumber);
+        postContainer.appendChild(postScript);
+        postContainer.appendChild(discussionScript);
+
+        container.appendChild(postContainer); // Добавляем контейнер поста в главный контейнер
+      }
+    }
+
+    function createPaginationButtons() {
+      paginationContainer.innerHTML = ''; // Очищаем кнопки пагинации
+
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.innerText = i;
+        button.addEventListener('click', () => {
+          loadPage(i);
+        });
+        paginationContainer.appendChild(button);
+      }
+    }
+
+    // Инициализация:
+    createPaginationButtons(); // Создаем кнопки пагинации
+    loadPage(1); // Загружаем первую страницу
+  </script>
   
             </main>
         </div>
