@@ -25,8 +25,7 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/101394551" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<style>
-    /* Общие стили */
+  <style>
 
     main {
       width: 80%; /* Занимает 80% ширины экрана */
@@ -79,6 +78,24 @@
     .pagination button:focus {
       outline: none; /* Убираем обводку при фокусе */
       box-shadow: 0 0 5px rgba(133, 150, 207, 0.5); /* Свечение при фокусе */
+    }
+
+    /* Медиа-запрос для мобильных устройств */
+    @media (max-width: 768px) {
+      main {
+        width: 100%; /* Занимаем почти всю ширину экрана на мобильных */
+      }
+
+      .post-container {
+        width: 100%; /* Занимаем 90% ширины main на мобильных */
+        height: 400px; /* Увеличиваем высоту на мобильных */
+      }
+
+      .pagination button {
+        padding: 6px 12px; /* Уменьшаем размер кнопок на мобильных */
+        margin: 3px;
+      }
+      
     }
   </style>
 </head>
@@ -164,7 +181,7 @@
                     const channel = 'TROTA_project';
                     const postsPerPage = 5;
                 
-                    // **ВАЖНО: Замените этот массив на свой список номеров постов**
+                    // **ВАЖНО: массив списка номеров постов**
                     const availablePosts = [
                     1521, 1520, 1518, 1509, 1501, 1493, 1489, 1478, 1475, 1472, 1469, 1449,
   1445, 1440, 1435, 1430, 1427, 1426, 1414, 1406, 1405, 1404,
