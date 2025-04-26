@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css\style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -40,7 +40,15 @@
                         <img src="images/icons/search.png" alt="Поиск">
                     </button>
                 </div>
-                <a href="#">Войти</a>
+                <a href="#" id="login-link">Войти</a>
+                <div id="profile-container">
+                    <div class="profile-circle">
+                        <img id="profile-image" src="" alt="Ваш профиль">
+                    </div>
+                    <span id="profile-name"></span>
+                    <button id="logout-button">Выйти</button>
+                    <button type="button" id="download-profile">Скачать профиль</button>
+                </div>
             </div>
         </div>
     </header>

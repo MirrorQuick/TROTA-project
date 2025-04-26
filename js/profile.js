@@ -1,4 +1,4 @@
-        
+
 const loginLink = document.getElementById('login-link');
 const profileModal = document.getElementById('profile-modal');
 const profileModalClose = document.getElementById('profile-modal-close');
@@ -14,77 +14,73 @@ const profileContainer = document.getElementById('profile-container');
 const profileImage = document.getElementById('profile-image');
 const profileName = document.getElementById('profile-name');
 const logoutButton = document.getElementById('logout-button');
-const profileCircle = document.querySelector('.profile-circle'); // Получаем элемент profile-circle
+const profileCircle = document.querySelector('.profile-circle');
+const downloadProfileButton = document.getElementById('download-profile');
 
-let profileData = null; // Переменная для хранения данных профиля
+let profileData = null;
+const profileChannel = new BroadcastChannel('profile-channel');
 
 // Функция для обновления отображения профиля
 function updateProfileDisplay() {
     if (profileData) {
-        profileImage.src = profileData.photoURL || ''; // Отображаем фото, проверяем на null
-        profileName.textContent = profileData.name || '';   // Отображаем имя, проверяем на null
-        profileContainer.style.display = 'block';      // Отображаем контейнер
-        loginLink.style.display = 'none';           // Скрываем кнопку "Войти"
-        //  Применяем цвет рамки, если есть
+        profileImage.src = profileData.photoURL || '';
+        profileName.textContent = profileData.name || '';
+        profileContainer.style.display = 'block';
+        loginLink.style.display = 'none';
         profileCircle.addEventListener('click', function() {
-            if (profileData) { // Открываем окно редактирования, только если профиль уже создан
+            if (profileData) {
                 openProfileModal();
             }
         });
         if (profileData.world === 'series' && profileData.color) {
-            document.querySelector('.profile-circle').style.borderColor = profileData.color;
+            profileCircle.style.borderColor = profileData.color;
+        } else {
+            profileCircle.style.borderColor = 'transparent';
         }
-
     } else {
-        profileContainer.style.display = 'none';      // Скрываем контейнер
-        loginLink.style.display = 'inline';          // Отображаем кнопку "Войти"
-        document.querySelector('.profile-circle').style.borderColor = 'transparent';
+        profileContainer.style.display = 'none';
+        loginLink.style.display = 'inline';
+        profileCircle.style.borderColor = 'transparent';
     }
 }
-function openProfileModal() {
-             // Заполняем форму данными профиля, если они есть
-            if (profileData) {
-                document.getElementById('name').value = profileData.name || '';
-                document.getElementById('age').value = profileData.age || '';
-                document.getElementById('world').value = profileData.world || 'books'; // Установите значение по умолчанию
-                document.getElementById('element').value = profileData.element || '';
-                document.getElementById('color').value = profileData.color || '#000000';
-                document.getElementById('character').value = profileData.character || 'Mitaella'; // Установите значение по умолчанию
-                
-                // Показываем/скрываем опции в зависимости от выбранного мира
-                if (profileData.world === 'books') {
-                    booksOptions.style.display = 'block';
-                    seriesOptions.style.display = 'none';
-                } else {
-                    booksOptions.style.display = 'none';
-                    seriesOptions.style.display = 'block';
-                }
 
-            } else {
-                // Очищаем форму, если профиля нет
-                document.getElementById('profile-form').reset();
-            }
-            profileModal.style.display = 'block';
+function openProfileModal() {
+    if (profileData) {
+        document.getElementById('name').value = profileData.name || '';
+        document.getElementById('age').value = profileData.age || '';
+        document.getElementById('world').value = profileData.world || 'books';
+        document.getElementById('element').value = profileData.element || '';
+        document.getElementById('color').value = profileData.color || '#000000';
+        document.getElementById('character').value = profileData.character || 'Mitaella';
+
+        if (profileData.world === 'books') {
+            booksOptions.style.display = 'block';
+            seriesOptions.style.display = 'none';
+        } else {
+            booksOptions.style.display = 'none';
+            seriesOptions.style.display = 'block';
         }
-// Открываем модальное окно профиля при клике на "Войти"
+    } else {
+        document.getElementById('profile-form').reset();
+    }
+    profileModal.style.display = 'block';
+}
+
 loginLink.addEventListener('click', function(event) {
-    event.preventDefault();  // Предотвращаем переход по ссылке
-     openProfileModal();
+    event.preventDefault();
+    openProfileModal();
 });
 
-// Закрываем модальное окно профиля
 profileModalClose.addEventListener('click', function() {
     profileModal.style.display = 'none';
 });
 
-// Закрываем модальное окно при клике вне его
 window.addEventListener('click', function(event) {
     if (event.target == profileModal) {
         profileModal.style.display = 'none';
     }
 });
 
-// Обработчик изменения выбора мира
 worldSelect.addEventListener('change', function() {
     if (worldSelect.value === 'books') {
         booksOptions.style.display = 'block';
@@ -95,7 +91,6 @@ worldSelect.addEventListener('change', function() {
     }
 });
 
-// Обработчик ввода стихии
 elementInput.addEventListener('input', function() {
     if (elementInput.value.toLowerCase() === 'тьма') {
         raceSpan.textContent = 'Вед';
@@ -104,7 +99,6 @@ elementInput.addEventListener('input', function() {
     }
 });
 
-// Функция для сохранения профиля в файл
 function downloadProfile(profile) {
     if (!profile) {
         alert('Нет данных для сохранения.');
@@ -123,7 +117,6 @@ function downloadProfile(profile) {
     URL.revokeObjectURL(url);
 }
 
-// Функция для загрузки профиля из файла
 function loadProfileFromFile() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -136,8 +129,8 @@ function loadProfileFromFile() {
             reader.onload = (e) => {
                 try {
                     profileData = JSON.parse(e.target.result);
+                    saveProfileAndBroadcast();
                     updateProfileDisplay();
-
                     profileModal.style.display = 'none';
                 } catch (error) {
                     alert('Ошибка при разборе файла профиля.');
@@ -154,7 +147,15 @@ function loadProfileFromFile() {
     input.click();
 }
 
-// Обработчик кнопки "Сохранить профиль"
+function broadcastProfileUpdate() {
+    profileChannel.postMessage(profileData);
+}
+
+function saveProfileAndBroadcast() {
+    localStorage.setItem('userProfile', JSON.stringify(profileData));
+    broadcastProfileUpdate();
+}
+
 saveProfileButton.addEventListener('click', function() {
     const name = document.getElementById('name').value;
     const age = document.getElementById('age').value;
@@ -175,16 +176,14 @@ saveProfileButton.addEventListener('click', function() {
         return;
     }
     if (world === 'books' && !element) {
-    alert('Пожалуйста, выберите стихию.');
-    return;
-}
-if (world === '' ) {
-    alert('Пожалуйста, выберите мир.');
-    return;
-}
+        alert('Пожалуйста, выберите стихию.');
+        return;
+    }
+    if (world === '') {
+        alert('Пожалуйста, выберите мир.');
+        return;
+    }
 
-
-    // Читаем фото как URL
     const reader = new FileReader();
 
     reader.onload = function(e) {
@@ -200,8 +199,10 @@ if (world === '' ) {
             character: character
         };
 
-        profileModal.style.display = 'none';  // Закрываем окно
-        updateProfileDisplay();  // Обновляем отображение профиля
+        saveProfileAndBroadcast();
+
+        profileModal.style.display = 'none';
+        updateProfileDisplay();
     };
 
     reader.onerror = (error) => {
@@ -209,45 +210,19 @@ if (world === '' ) {
         console.error(error);
     };
 
-    reader.readAsDataURL(photoFile); // Читаем данные как URL
+    reader.readAsDataURL(photoFile);
 });
 
-// Обработчик кнопки "Загрузить профиль"
 loadProfileButton.addEventListener('click', function() {
     loadProfileFromFile();
 });
 
-// Обработчик кнопки "Выйти"
 logoutButton.addEventListener('click', function() {
     profileData = null;
+    localStorage.removeItem('userProfile');
+    broadcastProfileUpdate();
     updateProfileDisplay();
 });
-
-// Загрузка профиля при загрузке страницы (убрал localStorage)
-window.addEventListener('load', function() {
-    updateProfileDisplay(); // Инициализируем отображение
-});
-localStorage.setItem('userProfile', JSON.stringify(profileData));
-window.addEventListener('load', function() {
-    const storedProfile = localStorage.getItem('userProfile');
-    if (storedProfile) {
-        profileData = JSON.parse(storedProfile);
-        updateProfileDisplay();
-    } else {
-        updateProfileDisplay(); // Инициализируем отображение в любом случае
-    }
-});
-window.addEventListener('load', function() {
-    const storedProfile = localStorage.getItem('userProfile');
-    if (storedProfile) {
-        profileData = JSON.parse(storedProfile);
-        updateProfileDisplay();
-    } else {
-        updateProfileDisplay(); // Инициализируем отображение в любом случае
-    }
-});
-localStorage.removeItem('userProfile');
-const downloadProfileButton = document.getElementById('download-profile');
 
 downloadProfileButton.addEventListener('click', function() {
     if (profileData) {
@@ -255,4 +230,19 @@ downloadProfileButton.addEventListener('click', function() {
     } else {
         alert('Нет данных профиля для скачивания.');
     }
+});
+
+// Слушаем обновления профиля из других вкладок
+profileChannel.onmessage = (event) => {
+    profileData = event.data;
+    updateProfileDisplay();
+};
+
+// Загрузка профиля при загрузке страницы
+window.addEventListener('load', function() {
+    const storedProfile = localStorage.getItem('userProfile');
+    if (storedProfile) {
+        profileData = JSON.parse(storedProfile);
+    }
+    updateProfileDisplay(); // Вызываем только после загрузки из localStorage
 });
