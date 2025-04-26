@@ -1,0 +1,47 @@
+
+    form {
+        background-color: #2c3e50; /* Фон формы */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #8596CF; /* Светло-синий цвет */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea,
+    select {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 5px;
+        border: 1px solid #8596CF; /* Светло-синяя обводка */
+        border-radius: 4px;
+        background-color: #34495e; /* Темный фон полей */
+        color: #fff;
+        margin-left: 0px;
+    }
+
+    button {
+        background-color: #8596CF; /* Светло-синяя кнопка */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #download-instructions {
+        margin-top: 10px;
+        color: #8596CF; /* Светло-синий цвет */
+    }

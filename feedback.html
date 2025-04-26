@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обратная связь</title>
     <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\feedback.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -93,7 +94,61 @@
             </div>
 
             <main>
+                <form id="feedback-form">
+                    <div class="form-group">
+                        <label for="form-type">Выберите тип запроса:</label>
+                        <select id="form-type" name="form_type">
+                            <option value="question">Задать вопрос</option>
+                            <option value="review">Оставить отзыв</option>
+                            <option value="limmanuel">Спросить Лиммануэля</option>
+                            <option value="mitu">Спросить Миту</option>
+                            <option value="nina">Спросить Нину</option>
+                            <option value="job">Устроиться к нам</option>
+                        </select>
+                    </div>
                 
+                    <div class="form-group">
+                        <label for="name">Ваше имя:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Ваши контакты для связи:</label>
+                        <input type="email" id="contact" name="contact" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="subject">Тема вопроса:</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                
+                    <div id="job-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="job-position">Выберите кем:</label>
+                            <select id="job-position" name="job_position">
+                                <option value="2d">2D аниматор</option>
+                                <option value="3d">3D аниматор</option>
+                                <option value="background">Художник-фоновик</option>
+                                <option value="actor">Актер озвучки</option>
+                                <option value="sound">Звукорежиссер</option>
+                                <option value="musician">Музыкант</option>
+                                <option value="vocalist">Вокалист</option>
+                                <option value="other">Ваш вариант</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="portfolio">Ссылка на ваше портфолио:</label>
+                            <input type="url" id="portfolio" name="portfolio">
+                        </div>
+                    </div>
+                
+                    <button type="button" onclick="generateAndDownloadFile()">Отправить вопрос</button>
+                    <p id="download-instructions" style="display: none;">Файл с вашим вопросом скачан. Пожалуйста, отправьте его мне <a href="https://t.me/anonaskbot?start=trota_project">АНОНИМНО</a></p>
+                </form>              
             </main>
         </div>
     </div>
@@ -184,8 +239,7 @@
             </form>
         </div>
     </div>
-
- 
+    <script src="js\feedback.js"></script>
     <script src="js/main.js"></script>
     <script src="js/profile.js"></script>
 </body>
