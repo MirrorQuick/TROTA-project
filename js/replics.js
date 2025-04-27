@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const vicaTeaReplics = {
         names: ['Вика', 'Вика Чайок', 'Vica Tea', 'Бастрыгина Виктория', 'Виктория Бастрыгина'],
-        keywords: ['Автор проекта', 'создатель', 'мама', 'кто главный'],
+        keywords: ['Автор проекта', 'создатель', 'мама', 'мать', 'кто главный'],
         phrases: [
             "Вика здесь.",
             "У меня есть кое-что для вас.",
@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const nastasyaReplics = {
         names: ['Настасея', 'Настя'],
-        keywords: ['мама Нины', 'жена Фима'],
+        keywords: ['мама Нины','мать Нины', 'жена Фима'],
         phrases: [
             "Нина, солнышко, иди к маме.",
             "...Он всегда говорил об этих стихийцах...без него так тяжело",
@@ -729,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const avdotyaReplics = {
         names: ['Авдотья', 'Дуня'],
-        keywords: ['мать Тео', 'жена Юхана', 'мать Сени'],
+        keywords: ['мать Тео', 'жена Юхана', 'мать Сени', 'мама Сени', 'мама Сени'],
         phrases: [] // Пустой массив, так как фразы не предоставлены
     };
 
@@ -818,7 +818,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const veneraReplics = {
         names: ['Венера'],
-        keywords: ['розовая ромашка', 'мама Киры'],
+        keywords: ['розовая ромашка', 'мама Киры', 'мать Киры'],
         phrases: [
             "Я хочу, чтобы у Киры было счастливое детство"
         ]
