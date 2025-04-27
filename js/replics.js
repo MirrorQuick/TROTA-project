@@ -729,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const avdotyaReplics = {
         names: ['Авдотья', 'Дуня'],
-        keywords: ['мать Тео', 'жена Юхана', 'мать Сени', 'мама Сени', 'мама Сени'],
+        keywords: ['мать Тео', 'жена Юхана', 'мать Сени', 'мама Сени', 'мама Тео'],
         phrases: [] // Пустой массив, так как фразы не предоставлены
     };
 
