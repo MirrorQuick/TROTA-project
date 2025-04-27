@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Песни</title>
     <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\songs.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -92,7 +93,46 @@
             </div>
 
             <main>
-                
+                  
+                    <ul style="list-style-type: none; padding: 0;">
+                      <li class="song-item">
+                        <div class="song-info">
+                          <div class="song-title">Если бы могла я летать</div>
+                          <div>Песня Миты</div>
+                        </div>
+                        <div class="song-actions">
+                          <button class="song-button play-button" data-src="music\mita-fly.mp3">Слушать</button>
+                          <a href="music\mita-fly.mp3" download="MitaSong.mp3"><button class="song-button">Скачать</button></a>
+                          <span class="song-time">00:39</span>
+                        </div>
+                      </li>
+                  
+                      <li class="song-item">
+                        <div class="song-info">
+                          <div class="song-title">А в театре</div>
+                          <div>Песня актеров</div>
+                        </div>
+                        <div class="song-actions">
+                          <button class="song-button play-button" data-src="music\teatr.mp3">Слушать</button>
+                          <a href="music\teatr.mp3" download="TheatreSong.mp3"><button class="song-button">Скачать</button></a>
+                          <span class="song-time">01:49</span>
+                        </div>
+                      </li>
+                  
+                      <li class="song-item">
+                        <div class="song-info">
+                          <div class="song-title">Горький шишечный чайок</div>
+                          <div>Песня Нины</div>
+                        </div>
+                        <div class="song-actions">
+                          <button class="song-button play-button" data-src="music\nina-tea.mp3">Слушать</button>
+                          <a href="music\nina-tea.mp3" download="NinaSong.mp3"><button class="song-button">Скачать</button></a>
+                          <span class="song-time">02:57</span>
+                        </div>
+                      </li>
+                    </ul>
+                  
+                    <audio id="audioPlayer" controls style="width: 100%;"></audio>    
             </main>
         </div>
     </div>
@@ -183,8 +223,7 @@
             </form>
         </div>
     </div>
-
- 
+    <script src="js\songs.js"></script>
     <script src="js/main.js"></script>
     <script src="js/profile.js"></script>
 </body>

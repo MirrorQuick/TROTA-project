@@ -1,0 +1,59 @@
+ /* Общий стиль для элементов списка */
+ .song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #8596CF;
+    color: #8596CF;
+  }
+
+  /* Стиль для названия песни и автора */
+  .song-info {
+    flex-grow: 1;
+  }
+
+  .song-title {
+    font-weight: bold;
+  }
+
+  /* Стиль для кнопок и времени */
+  .song-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .song-time {
+    margin-right: 15px;
+  }
+
+  .song-button {
+    background-color: transparent;
+    border: 1px solid #8596CF;
+    color: #8596CF;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .song-button:hover {
+    background-color: #8596CF;
+    color: white;
+  }
+
+  /*  Кнопка "Слушать" слева, скачивание справа */
+  .song-actions {
+    display: flex;
+    flex-direction: row; /*  Кнопки в ряд */
+    align-items: center;
+    justify-content: flex-start; /* Расположить элементы слева */
+  }
+
+  .song-actions .song-button:first-child { /*  Отступ между "Слушать" и "Скачать" */
+    margin-right: 10px;
+  }
+
+  .song-time {
+    margin-right: auto; /*  Переместить время вправо */
+  }
