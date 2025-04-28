@@ -30,6 +30,12 @@ function updateProfileDisplay() {
         logoutButton.style.display = 'inline-block'; // Make logout button visible
         downloadProfileButton.style.display = 'inline-block'; // Make download button visible
         loginLink.style.display = 'none';
+
+        // Отображение игровых данных
+        document.getElementById('games-played').textContent = profileData.gamesPlayed || 0;
+        document.getElementById('best-score').textContent = profileData.bestScore || 0;
+        document.getElementById('total-candies').textContent = profileData.totalCandies || 0;
+
         profileCircle.addEventListener('click', function() {
             if (profileData) {
                 openProfileModal();
@@ -47,6 +53,10 @@ function updateProfileDisplay() {
         downloadProfileButton.style.display = 'none'; // Hide download button
         loginLink.style.display = 'inline';
         profileCircle.style.borderColor = 'transparent';
+
+        document.getElementById('games-played').textContent = 0;
+        document.getElementById('best-score').textContent = 0;
+        document.getElementById('total-candies').textContent = 0;
     }
 }
 
@@ -202,7 +212,10 @@ saveProfileButton.addEventListener('click', function() {
             world: world,
             element: element,
             color: color,
-            character: character
+            character: character,
+            gamesPlayed: profileData ? (profileData.gamesPlayed || 0) : 0,
+            bestScore: profileData ? (profileData.bestScore || 0) : 0,
+            totalCandies: profileData ? (profileData.totalCandies || 0) : 0
         };
 
         saveProfileAndBroadcast();

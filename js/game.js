@@ -281,6 +281,24 @@ function drawGame() {
                 document.getElementById('game-over').style.display = 'block';
                 document.getElementById('score').textContent = score;
                 document.getElementById('candies').textContent = candyScore; // Отображаем конфеты в конце игры
+
+                // Получаем профиль из localStorage
+                let storedProfile = localStorage.getItem('userProfile');
+                if (storedProfile) {
+                    storedProfile = JSON.parse(storedProfile);
+
+                     // Обновляем данные профиля
+                    storedProfile.gamesPlayed = (storedProfile.gamesPlayed || 0) + 1; // Инкремент игр
+                    storedProfile.totalCandies = (storedProfile.totalCandies || 0) + candyScore; // Обновляем общее количество конфет
+                    storedProfile.bestScore = Math.max(storedProfile.bestScore || 0, score); // Обновляем лучший счет
+
+                    localStorage.setItem('userProfile', JSON.stringify(storedProfile));
+                    // Отправляем сообщение об обновлении профиля в другие вкладки
+                    const profileChannel = new BroadcastChannel('profile-channel');
+                    profileChannel.postMessage(storedProfile);
+                }
+                profileChannel.close();
+                // Конец игры
             }
         }
     }
