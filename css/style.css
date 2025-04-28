@@ -1,9 +1,9 @@
 /* Общие стили */
 :root {
-    --primary-color: #343e5e;
-    --secondary-color: #fdee96;
-    --background-color: #141b22;
-    --text-color: var(--secondary-color);
+    --primary-color: #181c27; /* Фон для header, footer, menu */
+    --secondary-color: #a9c280; /* Обрамление кнопок, поиска и т.д. */
+    --background-color: #000512; /* Основной фон body */
+    --text-color: #f6e6c6; /* Основной цвет текста */
     --font-family: sans-serif;
 }
 
@@ -36,7 +36,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: #fffbd5;
+    color: #fffbd5; /* Светлее текст при наведении */
 }
 
 ul {
@@ -49,7 +49,7 @@ header{
 
     background-color: var(--primary-color);
     padding: 0.5rem 0;
-    z-index: 100;
+    z-index: 2;
 }
 
 footer {
@@ -57,7 +57,7 @@ footer {
     padding: 1rem;
     text-align: center;
     margin-top: 2rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .logo img {
@@ -66,7 +66,7 @@ footer {
 
 .auth a {
     padding: 5px 10px;
-    border: 1px solid #fdee96;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -116,7 +116,7 @@ footer {
 }
 
 .menu a:hover {
-    border: 1px solid #fdee96;
+    border: 1px solid var(--secondary-color);
     text-decoration: none;
 }
 
@@ -133,7 +133,7 @@ footer {
 /* Top Bar */
 .top-bar {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--text-color);
     padding: 0.5rem;
 }
 
@@ -152,14 +152,17 @@ footer {
 .search-box {
     display: flex;
     align-items: center;
-    border: #809fc4;
+    border: 2px solid var(--secondary-color);
+    box-shadow:0 0 10px var(--secondary-color);
+    padding-right: 5px;
+    border-radius: 60px;
 }
 
 .top-bar input[type="text"] {
     padding: 0.5rem;
     border: none;
     border-radius: 3px;
-    background-color: #4e657a;
+    background-color: #34495e; /* Заменил, чтобы отличалось от фона сайта */
     color: var(--text-color);
     width: 150px;
     margin-right: 0.5rem;
@@ -179,10 +182,10 @@ footer {
 }
 
 .top-bar a {
-    color: #fdee96;
+    color: var(--text-color);
     text-decoration: none;
     padding: 5px 10px;
-    border: 1px solid #fdee96;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -192,7 +195,7 @@ footer {
     align-items: center;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #4e657a;
+    background-color: var(--primary-color); /* Фон стал светлее, чтобы лучше читалось */
     border-radius: 10px;
     flex-direction: column;
     text-align: center;
@@ -220,7 +223,7 @@ footer {
 
 #full-description {
     margin-top: 10px;
-    color: #fdee96;
+    color: var(--text-color);
 }
 
 .hidden {
@@ -253,21 +256,21 @@ nav {
     width: 100%;
     margin-right: 0;
     margin-bottom: 1rem;
-    background-color: #4e657a;
+    background-color: var(--primary-color);
     border-radius: 10px;
     padding: 0.5rem;
 }
 
 .main-content {
     flex: 1;
-    background-color: #4e657a;
+    background-color: var(--primary-color);
     border-radius: 10px;
     padding: 1rem;
     color: var(--text-color);
 }
 
 main {
-    background-color: #4e657a;
+    background-color: var(--primary-color);
     border-radius: 10px;
 }
 
@@ -295,7 +298,7 @@ main {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 4;
     left: 0;
     top: 0;
     width: 100%;
@@ -329,7 +332,7 @@ main {
 }
 
 #copy-link-modal {
-    background-color: #fdee96;
+    background-color: #393e46;
     color: #34495e;
     border: none;
     padding: 5px 10px;
@@ -338,58 +341,6 @@ main {
 }
 
 /* Адаптивность */
-@media (min-width: 768px) {
-    .content-wrapper {
-        flex-direction: row;
-    }
-
-    nav {
-        width: 200px;
-        margin-right: 1rem;
-        margin-bottom: 0;
-    }
-    .menu {
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-    }
-    .menu li {
-        margin: 5px;
-        flex-basis: auto;
-    }
-    .menu a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 5px;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        text-align: left;
-    }
-
-    .info-block {
-        flex-direction: row;
-        text-align: left;
-    }
-
-    .info-block .logo {
-        margin-right: 1rem;
-        margin-bottom: 0;
-    }
-
-    .info-block .logo img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .info-block h1 {
-        font-size: 2rem;
-    }
-    .top-bar-content {
-        flex-direction: row;
-        align-items: center;
-    }
-}
 /* анимашки*/
 .menu a {
     transition: all 0.3s ease; /* Плавная анимация */
@@ -426,19 +377,19 @@ main {
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    color: #fdee96; /* Желтый текст */
+    color: #f6e6c6; /* Желтый текст */
 }
 /* Общие стили */
 body {
     cursor: url('images/my-cursor.png'), auto; /* Замените 'images/my-cursor.png' на путь к вашему изображению */
     font-family: sans-serif;
     margin: 0;
-    background-color: #141b22; /* Синий фон */
-    color: #fdee96; /* Желтый текст */
-    
+    background-color: #000512; /* Синий фон */
+    color: #f6e6c6; /* Желтый текст */
+
 }
 dd p{
-    background-color: #8ba2aa;
+    background-color: #393e46;
     color: #141b22;
     padding: 2%;
     font-size: medium;
@@ -448,8 +399,8 @@ dd p{
     font-size: large;
     align-items: center;
     padding: 10px;
-    background-color: #466069; /* Светло-серый фон */
-    border: 1px solid #8fa1bd;
+    background-color: #12141a; /* Светло-серый фон */
+    border: 1px solid #000000;
     border-radius: 29px;
     color: #f0e2b4; /* Темно-серый цвет текста */
 }
@@ -518,16 +469,16 @@ dd p{
 
 p {
     font-size: 15px;
-    color: #fdee96; /* Убедимся, что все параграфы желтые */
+    color: #f6e6c6; /* Убедимся, что все параграфы желтые */
 }
 
 li {
     font-size: 20px;
-    color: #fdee96; /* Убедимся, что все элементы списка желтые */
+    color: #f6e6c6; /* Убедимся, что все элементы списка желтые */
 }
 
 a {
-    color: #fdee96; /* Желтый цвет ссылок */
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -537,17 +488,17 @@ a:hover {
 
 /* Шапка */
 header {
-    background-color: #34495e; /* Темно-синий */
+    background-color: var(--primary-color);
     padding: 0;
 }
 
 /* Подвал */
 footer {
-    background-color:  #34495e; /* Темно-синий */
+    background-color:  var(--primary-color);
     padding: 10px;
     text-align: center;
     margin-top: 20px;
-    color: #fdee96; /* Желтый текст в подвале */
+    color: #f6e6c6; /* Желтый текст в подвале */
 }
 
 .logo img {
@@ -556,7 +507,7 @@ footer {
 
 .auth a {
     padding: 5px 10px;
-    border: 1px solid #fdee96; /* Желтая рамка */
+    border: 1px solid var(--secondary-color); /* Желтая рамка */
     border-radius: 5px;
 }
 
@@ -588,7 +539,7 @@ footer {
 
 /* Навигация */
 nav {
-    background-color: #34495e; /* Синий фон навигации */
+    background-color: var(--primary-color); /* Синий фон навигации */
     padding: 10px;
     width: 200px;
 }
@@ -618,7 +569,7 @@ nav {
 }
 
 .menu a:hover {
-    border: 1px solid #fdee96; /* Желтая рамка при наведении */
+    border: 1px solid var(--secondary-color); /* Желтая рамка при наведении */
     text-decoration: none;
 }
 
@@ -634,8 +585,8 @@ nav {
 
 /* Top Bar */
 .top-bar {
-    background-color: #34495e; /* Темно-синий */
-    color: #fdee96; /* Желтый текст */
+    background-color: var(--primary-color); /* Темно-синий */
+    color: var(--text-color); /* Желтый текст */
     padding: 5px;
 }
 
@@ -654,14 +605,18 @@ nav {
 .search-box {
     display: flex;
     align-items: center;
+    border: 2px solid var(--secondary-color);
+    padding-right: 5px;
+    border-radius: 60px;
+    box-shadow:0 0 10px var(--secondary-color);
 }
 
 .top-bar input[type="text"] {
     padding: 5px;
     border: none;
     border-radius: 3px;
-    background-color: #34495e; /* Синий фон поля поиска */
-    color: #fdee96; /* Желтый текст в поле поиска */
+    background-color: var(--primary-color); /* Синий фон поля поиска */
+    color: var(--text-color); /* Желтый текст в поле поиска */
     width: 200px;
     margin-right: 5px;
 }
@@ -680,10 +635,10 @@ nav {
 }
 
 .top-bar a {
-    color: #fdee96; /* Желтый цвет ссылок */
+    color: var(--text-color); /* Желтый цвет ссылок */
     text-decoration: none;
     padding: 5px 10px;
-    border: 1px solid #fdee96; /* Желтая рамка */
+    border: 1px solid var(--secondary-color); /* Желтая рамка */
     border-radius: 5px;
 }
 
@@ -693,7 +648,7 @@ nav {
     align-items: center;
     padding: 20px;
     margin-bottom: 10px;
-    background-color: #34495e; /* Синий фон инфо-блока */
+    background-color: var(--primary-color); /* Синий фон инфо-блока */
     border-radius: 10px;
 }
 
@@ -714,12 +669,12 @@ nav {
 .info-block h1 {
     margin-top: 0;
     font-size: 2em;
-    color: #fdee96; /* Желтый заголовок */
+    color: var(--text-color); /* Желтый заголовок */
 }
 
 #full-description {
     margin-top: 10px;
-    color: #fdee96; /* Желтый текст полного описания */
+    color: var(--text-color); /* Желтый текст полного описания */
 }
 
 .hidden {
@@ -727,7 +682,7 @@ nav {
 }
 
 #copy-link {
-    background-color: #e67e22; /* Оранжевый -> Желтый (можно выбрать более подходящий оттенок) */
+    background-color: #393e46; /* Оранжевый -> Желтый (можно выбрать более подходящий оттенок) */
     color: #34495e; /* Синий Текст */
     border: none;
     padding: 5px 10px;
@@ -736,7 +691,7 @@ nav {
 }
 
 #copy-link:hover {
-    background-color: #b3aa5a; /* Оранжевый -> более насыщенный Желтый  */
+    background-color: #393e46; /* Оранжевый -> более насыщенный Желтый  */
 }
 
 /* Контейнер для навигации и контента */
@@ -745,26 +700,27 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    flex-direction:inherit;
 }
 
 nav {
     width: 200px;
     margin-right: 20px;
-    background-color: #4e657a;
+    background-color: var(--primary-color);
     border-radius: 10px;
     padding: 10px;
 }
 
 .main-content {
     flex: 1;
-    background-color: #4e657a; /* Синий фон контента */
+    background-color: var(--primary-color); /* Синий фон контента */
     border-radius: 10px;
     padding: 20px;
-    color: #fdee96; /* Желтый текст в основном контенте */
+    color: var(--text-color); /* Желтый текст в основном контенте */
 }
 
 main {
-    background-color: #4e657a; /* Синий фон основной части */
+    background-color: var(--primary-color); /* Синий фон основной части */
     border-radius: 10px;
 }
 
@@ -776,10 +732,10 @@ main {
 }
 
 .video-item {
-    border: 1px solid #5a6c86;
+    border: 1px solid #181c27;
     padding: 10px;
     border-radius: 5px;
-    background-color: #34495e; /* Синий фон видео */
+    background-color: var(--primary-color); /* Синий фон видео */
 }
 
 .video-item img {
@@ -797,15 +753,14 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #fdee96(0,0,0,0.4);
+    background-color: 181c27(0,0,0,0.4);
 }
 
 .modal-content {
-    background-color: #4e657a; /* Синий фон модального окна */
-    color: #fdee96; /* Желтый текст модального окна */
+    background-color: var(--primary-color); /* Синий фон модального окна */
+    color: var(--text-color); /* Желтый текст модального окна */
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #5a6c86;
     width: 40%;
     border-radius: 10px;
 }
@@ -832,45 +787,17 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
-/* Адаптивность (простой пример) */
-@media (max-width: 768px) {
-    .top-bar-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-box {
-        margin-top: 5px;
-    }
-
-    .top-bar input[type="text"] {
-        width: 100%;
-    }
-
-    .menu {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .menu a {
-        text-align: left;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-    }
-
-    nav {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
+.main-content{
+    background-color: #181c27;
 }
+.main-content{
+    overflow:hidden;
+}
+/* Адаптивность (простой пример) */
 
 .search-match {
-    background-color: #fdee96; /* Пример подсветки */
-    color: #34495e;
+    background-color: var(--secondary-color); /* Пример подсветки */
+    color: var(--primary-color);
 }
 /* Стили для контейнера логотипа и "Главная" */
 .logo-main {
@@ -881,7 +808,7 @@ main {
 .logo-main a {
     display: flex;
     align-items: center;
-    color: #fdee96; /* Желтый */
+    color: var(--text-color); /* Желтый */
     text-decoration: none;
 }
 
@@ -904,7 +831,11 @@ main {
     transition: transform 0.3s ease;
 }
 .video-item:hover img {
-    transform: scale(1.1);
+    transform: scale(2);
+}
+.video-item iframe{
+    width: 60%;
+    height: 100%;
 }
 .fade-in {
     opacity: 0;
@@ -920,14 +851,14 @@ nav {
     width: 100%; /* Навигация занимает всю ширину */
     margin-right: 0;
     margin-bottom: 1rem;
-    background-color: #4e657a;
+    background-color: #181c27;
     border-radius: 10px;
     padding: 0.5rem;
 }
 
 /* Стили для кнопки меню */
 .menu-toggle {
-    background-color: #34495e;
+    background-color: #252b3a;
     color: var(--secondary-color);
     border: none;
     padding: 0.5rem 1rem;
@@ -938,7 +869,7 @@ nav {
 }
 
 .menu-toggle:hover {
-    background-color: #5a6c86;
+    background-color: #333b52;
 }
 
 /* Отображаем кнопку и показываем меню при клике */
@@ -949,9 +880,16 @@ nav.open {
 .menu-toggle {
     display: block; /* Показываем кнопку на мобильных экранах */
 }
-
+header {
+    position: sticky; /* Делает элемент "липким" */
+    top: 0;           /* Прилипает к верху страницы */
+    background-color: #000512;
+  }
 /* Media Query для больших экранов (>= 768px) */
 @media (min-width: 768px) {
+    .main-content{
+        overflow:auto;
+    }
     /* Возвращаем исходные стили для навигации */
     nav {
         display: block;
@@ -976,8 +914,8 @@ input {
 .search-box {
     display: flex;
     align-items: center;
-    border: 2px solid #7ecdff;
-    box-shadow:0 0 10px blue;
+    border: 2px solid var(--secondary-color);
+    box-shadow:0 0 10px var(--secondary-color);
     padding-right: 5px;
     border-radius: 60px;
 }
@@ -997,7 +935,7 @@ input {
 #profile-modal select {
     background-color: #393e46; /* Более темный фон для полей ввода */
     color: #ffffff; /* Белый цвет для текста в полях ввода */
-    border: 1px solid #222831; /* Темная граница для полей ввода */
+    border: 1px solid 181c27; /* Темная граница для полей ввода */
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box; /* Важно, чтобы padding не увеличивал ширину */
@@ -1005,7 +943,7 @@ input {
 
 /* Стили для кнопок */
 #profile-modal button, #logout-button, #download-profile{
-    background-color: #4070a7; /* Яркий синий цвет для кнопок */
+    background-color: #393e46; /* Яркий синий цвет для кнопок */
     color: #ffffff; /* Белый цвет текста на кнопках */
     border: none;
     padding: 10px 20px;
@@ -1021,12 +959,12 @@ input {
 
 /* Стили для кнопки закрытия модального окна */
 #profile-modal .close {
-    color: #ffffff; /* Белый цвет для крестика */
+    color: #393e46; /* Белый цвет для крестика */
 }
 
 #profile-modal .close:hover,
 #profile-modal .close:focus {
-    color: #cccccc; /* Более светлый цвет при наведении */
+    color: #26484d; /* Более светлый цвет при наведении */
 }
 
 
@@ -1079,7 +1017,182 @@ input {
     }
 
     header{
-        background-color: var(--primary-color);
         padding: 0.5rem 0;
-        z-index: 100;
+        z-index: 2;
+    }
+    .banner {
+        position: relative; /* Чтобы элементы внутри позиционировались относительно баннера */
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .banner-content {
+        position: absolute; /* Размещаем поверх баннера */
+        top: 53%;          /* Центрируем по вертикали */
+        left: 50%;         /* Центрируем по горизонтали */
+        transform: translate(-50%, -50%); /* Точное центрирование */
+        z-index: 1;         /* Убедитесь, что контент выше баннера */
+        text-align: center; /* Выравниваем текст по центру (если есть) */
+    }
+    
+    .floating-image {
+        width: 200px;      /* Начальный размер изображения */
+        height: auto;
+        transition: transform 0.3s ease; /* Плавное изменение размера при наведении */
+        animation: floatImage 13s linear infinite alternate; /* Другое направление */
+        pointer-events: none; /* чтобы не мешала баннеру и кликам */
+    }
+    
+    .floating-image:hover {
+        transform: scale(3); /* Увеличение при наведении */
+    }
+    
+    @keyframes floatImage {
+        0% {
+            transform: translateX(-20px); /* Изначальное положение */
+        }
+        100% {
+            transform: translateX(20px);  /* Конечное положение */
+        }
+    }
+    
+    .banner img {
+        width: 110%;
+        height: auto;
+        display: block;
+        animation: moveBanner 10s linear infinite;
+    }
+    body {
+        min-height: 100vh;
+        flex-direction: column;
+    }
+    
+    footer {
+        margin-top: auto; /* Прижимаем футер к низу */
+    }
+    
+    @keyframes moveBanner {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(-3%); }
+        100% { transform: translateX(0); }
+    }
+    @media (max-width: 768px) {
+        .top-bar-content {
+            align-items: flex-start;
+        }
+        .search-box {
+            margin-top: 5px;
+        }
+    
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    
+        .menu a {
+            text-align: left;
+        }
+    
+        nav {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        .banner-content {
+            width: 150px; /* Уменьшите размер картинки на телефонах */
+          }
+          .banner img {
+            width: 300%; /* Уменьшите ширину баннера */
+            margin-left: -100%; /* Компенсируйте уменьшение ширины */
+          }
+        header{
+            padding: 0.5rem 0;
+            overflow-x: 500;
+        }
+        .floating-image{
+            width: 50%
+        }
+        .top-bar-content{
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%
+        }
+        .logo-main, .search-box, .login-link, .profile-container{
+            flex-basis: 25%;
+            flex-grow: 1;  /* Элементы будут расширяться, чтобы занять свободное пространство */
+            flex-shrink: 1; /* Элементы будут сжиматься, если не хватает места */
+        }
+            .content-wrapper {
+                flex-direction: row;
+            }
+        
+            nav {
+                width: 100%;
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
+            .menu {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            .menu li {
+                margin: 5px;
+            }
+            .menu a {
+                flex-direction: row;
+                align-items: center;
+                padding: 5px;
+                border: 1px solid transparent;
+                border-radius: 5px;
+                text-align: left;
+            }
+        
+            .info-block {
+                flex-direction: row;
+                text-align: left;
+            }
+        
+            .info-block .logo {
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
+        
+            .info-block .logo img {
+                width: 150px;
+                height: 150px;
+            }
+        
+            .info-block h1 {
+                font-size: 2rem;
+            }
+            .top-bar-content {
+                flex-direction: row;
+                align-items: center;
+            }
+            .content-wrapper {
+                display: flex;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                flex-direction: column; /*  Изменено на column чтобы меню было сверху */
+            }
+            .video-item{
+                height: auto;
+            }
+            .video-item iframe {
+                width: 100%;  /* Видео занимает всю ширину контейнера */
+                max-width: 100%; /* Видео не может быть шире контейнера */
+                height: auto;
+            }
+            
+            /* Media Query для больших экранов (>= 768px) */
+            .info-block h1{
+                font-size: 1.6rem;
+            }
+        
+    }
+    @media (min-width: 768px) {
+        .content-wrapper{
+            flex-direction: row;
+        }
     }

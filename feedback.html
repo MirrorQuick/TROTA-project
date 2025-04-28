@@ -26,14 +26,11 @@
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-    <header>
+<header>
         <div class="top-bar">
             <div class="top-bar-content">
                 <div class="logo-main">
-                    <a href="index.html">
-                        <img src="images/logo.png" alt="Логотип TROTA_project">
-                        <span>Главная</span>
-                    </a>
+                    <button class="menu-toggle">Меню</button>
                 </div>
                 <div class="search-box">
                     <input type="text" placeholder="Поиск">
@@ -42,24 +39,26 @@
                     </button>
                 </div>
                 <a href="#" id="login-link">Войти</a>
-                <div id="profile-container">
+                <div id="profile-container" style="display: none;">
                     <div class="profile-circle">
-                        <img id="profile-image" src="" alt="Ваш профиль">
+                        <img id="profile-image" style="display: none;" src="" alt="Ваш профиль">
                     </div>
-                    <span id="profile-name"></span>
-                    <button id="logout-button">Выйти</button>
-                    <button type="button" id="download-profile">Скачать профиль</button>
+                    <span id="profile-name" style="display: none;"></span>
+                    <button id="logout-button" style="display: none;">Выйти</button>
+                    <button type="button" id="download-profile" style="display: none;">Скачать профиль</button>
                 </div>
             </div>
         </div>
     </header>
-
+    <script src="js/main.js"></script>
     <div class="banner">
+        <div class="banner-content">
+          <img class="floating-image" src="images\hush.png" alt="Тише, дорогая Мита">
+        </div>
         <img src="images/banner.png" alt="Баннер TROTA_project">
-    </div>
+      </div>
 
     <div class="content-wrapper">
-        <button class="menu-toggle">Меню</button>
         <nav>
             <ul class="menu">
                 <li class="fade-in"><a href="index.html"><img src="images\logo.png" alt="Главная"><span>Главная</span></a></li>

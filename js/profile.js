@@ -26,6 +26,9 @@ function updateProfileDisplay() {
         profileImage.src = profileData.photoURL || '';
         profileName.textContent = profileData.name || '';
         profileContainer.style.display = 'block';
+        profileImage.style.display = 'block';  // Make profile image visible
+        logoutButton.style.display = 'inline-block'; // Make logout button visible
+        downloadProfileButton.style.display = 'inline-block'; // Make download button visible
         loginLink.style.display = 'none';
         profileCircle.addEventListener('click', function() {
             if (profileData) {
@@ -39,6 +42,9 @@ function updateProfileDisplay() {
         }
     } else {
         profileContainer.style.display = 'none';
+        profileImage.style.display = 'none'; // Hide profile image
+        logoutButton.style.display = 'none';    // Hide logout button
+        downloadProfileButton.style.display = 'none'; // Hide download button
         loginLink.style.display = 'inline';
         profileCircle.style.borderColor = 'transparent';
     }
