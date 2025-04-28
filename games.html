@@ -92,6 +92,25 @@
             </div>
 
             <main>
+                <ul class="menu" style="width: 70%;"><li class="fade-in"><a href="html\games\mitas novel\index_novel.html"><img src="images\logo.png" alt="Игра"><span>Новелла, которую вы еще не видели!</span></a></li></ul>
+               
+                    <div id="game-container">
+                        <canvas id="game-canvas"></canvas>
+                        <div id="game-over" style="display: none;">
+                            <h2>Игра окончена!</h2>
+                            <p>Счет: <span id="score">0</span></p>
+                            <p>Собрано конфет: <span id="candies">0</span></p> <!-- Добавленный элемент для конфет -->
+                            <button id="restart-button">Играть снова</button>
+                        </div>
+                    </div>
+            </main>
+            <button class="question-button"> <h2>Рекорды:</h2>
+                <p>VicaTea: счет 1071, конфет: 24</p>
+                <p>Dremuchila: 118</p>
+                <p><a href="@VicaTea">Вписать ваш рекорд?</a>
+                    <p>Пришлите мне скриншот</p>
+            </button>
+            <a href=""
                 <div class="responsive-iframe-container">
                     <iframe
                       src="https://pointjs.ru/pages/examples/sandbox/vika/1/index.html"
@@ -116,24 +135,6 @@
                     height: 100%;
                   }
                   </style>
-               
-                    <div id="game-container">
-                        <canvas id="game-canvas"></canvas>
-                        <div id="game-over" style="display: none;">
-                            <h2>Игра окончена!</h2>
-                            <p>Счет: <span id="score">0</span></p>
-                            <p>Собрано конфет: <span id="candies">0</span></p> <!-- Добавленный элемент для конфет -->
-                            <button id="restart-button">Играть снова</button>
-                        </div>
-                    </div>
-            </main>
-            <button class="question-button"> <h2>Рекорды:</h2>
-                <p>VicaTea: счет 1071, конфет: 24</p>
-                <p>Dremuchila: 118</p>
-                <p><a href="@VicaTea">Вписать ваш рекорд?</a>
-                    <p>Пришлите мне скриншот</p>
-            </button>
-            
                     
         </div>
     </div>
