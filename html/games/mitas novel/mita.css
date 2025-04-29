@@ -1,14 +1,16 @@
 body {
     font-family: sans-serif;
-    background-color: #1e293b; /* Dark Background color */
-    color: #e2e8f0; /* Light gray text */
+    background-color: #1e293b;
+    color: #e2e8f0;
+    font-size: 16px; /* Базовый размер шрифта */
+    line-height: 1.5; /* Добавлен межстрочный интервал */
 }
 
 #game-container {
     width: 800px;
     margin: 50px auto;
     margin-top: 5%;
-    background-color: #0f172a;  /* Dark blue container */
+    background-color: #0f172a;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -18,25 +20,30 @@ body {
     min-height: 150px;
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #334155; /* Darker gray border */
+    border: 1px solid #334155;
     border-radius: 3px;
-    color:#e2e8f0; /* Light gray text */
-    background-color: #1e293b; /* Dark Background color */
+    color:#e2e8f0;
+    background-color: #1e293b;
+    font-size: 1.2em;
+    line-height: 1.6;
+    word-break: break-word;
 }
 
 #choices-area button {
     padding: 10px 20px;
     margin: 5px;
-    background-color: #475569; /* Dark Grey */
-    color: #cbd5e1; /* Light blue grey */
+    background-color: #475569;
+    color: #cbd5e1;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 #choices-area button:hover {
-    background-color: #64748b; /* Slightly lighter gray */
+    background-color: #64748b;
 }
+
 #media-area {
     max-width: 80%;
     margin: 20px auto;
@@ -49,33 +56,41 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 #media-area video {
-    object-fit: cover; /* Видео заполняет контейнер, обрезая, если необходимо */
-  }
+    object-fit: cover;
+}
 
 /* Media Queries для мобильных устройств */
 @media (max-width: 768px) {
-  #media-area {
-    max-width: 95%; /* Занимает большую часть ширины экрана */
-    margin: 10px auto; /* Уменьшаем margin */
-  }
+    body {
+        font-size: 18px; /* Увеличенный базовый размер шрифта */
+    }
 
-  #media-area img, #media-area video {
-    max-width: 100%; /* Изображения и видео занимают всю доступную ширину контейнера */
-    height: auto;
-  }
+    #media-area {
+        max-width: 95%;
+        margin: 10px auto;
+    }
 
-  #game-container {
-    width: 90%; /* Контейнер занимает 90% ширины экрана */
-    margin: 20px auto; /* Уменьшаем верхний и нижний margin */
-    margin-top: 10%;
-    padding: 10px; /* Уменьшаем padding */
-  }
+    #media-area img, #media-area video {
+        max-width: 100%;
+        height: auto;
+    }
 
-  #choices-area button {
-    padding: 8px 16px; /* Уменьшаем padding кнопок */
-    margin: 3px; /* Уменьшаем margin кнопок */
-    font-size: 0.9em; /* Уменьшаем размер шрифта на кнопках */
-  }
+    #game-container {
+        width: 90%;
+        margin: 20px auto;
+        margin-top: 10%;
+        padding: 10px;
+    }
 
+    #text-area {
+        font-size: 1.4em; /* Увеличенный размер шрифта для текста */
+    }
+
+    #choices-area button {
+        padding: 8px 16px;
+        margin: 3px;
+        font-size: 1.5rem; /* Увеличенный размер шрифта для кнопок */
+    }
 }
