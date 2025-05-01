@@ -1,0 +1,116 @@
+/* ... (Your existing styles) ... */
+
+.fanart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 2 columns, responsive */
+    grid-gap: 10px;
+}
+
+.fanart-item {
+    background-color: var(--primary-color);
+    border: 1px solid #5a6c86;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden; /* Prevents image overflow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
+
+.fanart-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below image */
+}
+
+.fanart-item .fanart-caption {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #eee;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #fffbd5;
+    color: #181c27;
+}
+
+.pagination button.active {
+    background-color: #fffbd5; /* Highlight the current page */
+    color: #181c27;
+}
+/* ... (Ваши существующие стили) ... */
+
+.fanart-item {
+    background-color: var(--primary-color);
+    border: 1px solid #5a6c86;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden; /* Prevents image overflow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    max-width: 300px; /* Ограничили максимальную ширину элемента, чтобы он не был слишком большим на больших экранах */
+    margin: 0 auto; /* Центрируем элемент в ячейке сетки, если он уже, чем ячейка */
+}
+
+.fanart-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below image */
+}
+
+.fanart-item .fanart-caption {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #eee;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #fffbd5;
+    color: #181c27;
+}
+
+.pagination button.active {
+    background-color: #fffbd5; /* Highlight the current page */
+    color: #181c27;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .fanart-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    }
+    .fanart-item {
+        max-width: none; /* Снимаем ограничение ширины на мобильных */
+    }
+}

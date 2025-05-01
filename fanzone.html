@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фанарты</title>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fanzone.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -91,7 +92,13 @@
             </div>
 
             <main>
-                
+                <div id="telegram-posts" class="fanart-grid">
+                    <!-- Сюда будут добавляться посты -->
+                </div>
+
+                <div class="pagination" id="pagination-container">
+                    <!-- Кнопки для страниц будут добавлены сюда -->
+                </div>
             </main>
         </div>
     </div>
@@ -104,67 +111,69 @@
             <td><a href="https://www.youtube.com/@TROTA_project"><img src="images\icons\youtube.png" alt="YouTube"><span>YouTube</span></a></td>
         </tr>
         <tr>
-            <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty.png" alt="Boosty"><span>Boosty</span></a></td>
-            <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
-            <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
-        </tr>
-    </table>
-    <br>
-    <p>© 2025 TROTA_project. Все права защищены.</p>
-</footer>
-
-    <!-- Модальное окно -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Описание</h2>
-            <p>Здесь выходит мультсериал "Тише, дорогая Мита", который подходит для подростков и взрослых (16+).</p>
-            <p>Девочка-подросток Мита из малого технического городка чувствует себя очень подавленно и одиноко из-за ссор с отцом. Во время побега ее сбивает фургон двух эксцентричных, но добрых актеров, что помогают людям из больших городов решать проблемы при помощи особой методики – куклотерапии.</p>
-            <p>Ссылки: <a href="https://t.me/TROTA_project">Телеграм</a>, <a href="https://vk.com/trota_project">ВК</a>
-            </p>, <a href="https://www.youtube.com/@TROTA_project">Ютуб</a></p>,
-            <a href="https://boosty.to/trota_project">Поддержать</a></p>
-            <button id="copy-link-modal">Поделиться сайтом</button>
+            <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty
+ 
+                .png" alt="Boosty"><span>Boosty</span></a></td>
+                <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
+                <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
+            </tr>
+        </table>
+        <br>
+        <p>© 2025 TROTA_project. Все права защищены.</p>
+    </footer>
+    
+        <!-- Модальное окно -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Описание</h2>
+                <p>Здесь выходит мультсериал "Тише, дорогая Мита", который подходит для подростков и взрослых (16+).</p>
+                <p>Девочка-подросток Мита из малого технического городка чувствует себя очень подавленно и одиноко из-за ссор с отцом. Во время побега ее сбивает фургон двух эксцентричных, но добрых актеров, что помогают людям из больших городов решать проблемы при помощи особой методики – куклотерапии.</p>
+                <p>Ссылки: <a href="https://t.me/TROTA_project">Телеграм</a>, <a href="https://vk.com/trota_project">ВК</a>
+                </p>, <a href="https://www.youtube.com/@TROTA_project">Ютуб</a></p>,
+                <a href="https://boosty.to/trota_project">Поддержать</a></p>
+                <button id="copy-link-modal">Поделиться сайтом</button>
+            </div>
         </div>
-    </div>
-    <!-- Модальное окно для профиля -->
-    <div id="profile-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="profile-modal-close">&times;</span>
-            <h2>Создание профиля</h2>
-            <form id="profile-form">
-                <label for="name">Имя:</label><br>
-                <input type="text" id="name" name="name"><br><br>
-
-                <label for="age">Возраст:</label><br>
-                <input type="number" id="age" name="age"><br><br>
-
-                <label for="photo">Фото профиля:</label><br>
-                <input type="file" id="photo" name="photo" accept="image/*"><br><br>
-
-                <label for="world">Выберите мир:</label><br>
-                <select id="world" name="world">
-                    <option value="books">Книги (Флагеба)</option>
-                    <option value="series">Сериал (Техно)</option>
-                </select><br><br>
-
-                <div id="books-options" style="display: none;">
-                    <label for="element">Стихия:</label><br>
-                    <input type="text" id="element" name="element"><br>
-                    <p>Ваша раса: <span id="race"></span></p><br>
-                </div>
-
-                <div id="series-options" style="display: none;">
-                    <label for="color">Любимый цвет для рамки профиля:</label><br>
-                    <input type="color" id="color" name="color" value="#000000"><br><br>
-                </div>
-
-                <label for="character">Выберите персонажа:</label><br>
-                <select id="character" name="character">
-                    <option value="Mitaella">Митаэлла</option>
-                    <option value="Pavel">Павел</option>
-                    <option value="Polina">Полина</option>
-                    <option value="Lelya">Лёля</option>
-                    <option value="Kamilla">Камилла</option>
+        <!-- Модальное окно для профиля -->
+        <div id="profile-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="profile-modal-close">&times;</span>
+                <h2>Создание профиля</h2>
+                <form id="profile-form">
+                    <label for="name">Имя:</label><br>
+                    <input type="text" id="name" name="name"><br><br>
+    
+                    <label for="age">Возраст:</label><br>
+                    <input type="number" id="age" name="age"><br><br>
+    
+                    <label for="photo">Фото профиля:</label><br>
+                    <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+    
+                    <label for="world">Выберите мир:</label><br>
+                    <select id="world" name="world">
+                        <option value="books">Книги (Флагеба)</option>
+                        <option value="series">Сериал (Техно)</option>
+                    </select><br><br>
+    
+                    <div id="books-options" style="display: none;">
+                        <label for="element">Стихия:</label><br>
+                        <input type="text" id="element" name="element"><br>
+                        <p>Ваша раса: <span id="race"></span></p><br>
+                    </div>
+    
+                    <div id="series-options" style="display: none;">
+                        <label for="color">Любимый цвет для рамки профиля:</label><br>
+                        <input type="color" id="color" name="color" value="#000000"><br><br>
+                    </div>
+    
+                    <label for="character">Выберите персонажа:</label><br>
+                    <select id="character" name="character">
+                        <option value="Mitaella">Митаэлла</option>
+                        <option value="Pavel">Павел</option>
+                        <option value="Polina">Полина</option>
+                        <option value="Lelya">Лёля</option>
+                        <option value="Kamilla">Камилла</option>
                     <option value="Vano">Вано</option>
                     <option value="Don Grigoryev">Дон Григорьев</option>
                     <option value="Yasherka">Ящерка</option>
@@ -188,9 +197,9 @@
         </div>
     </div>
 
- 
     <script src="js/main.js"></script>
-    <script src="js\replics.js"></script>
+    <script src="js/replics.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/fanzone.js"></script>
 </body>
 </html>
