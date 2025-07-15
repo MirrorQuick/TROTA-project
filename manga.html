@@ -22,6 +22,11 @@
     /* Общие стили */
     body {
         color: var(--text-color);
+        font-size: 16px; /* Базовый размер шрифта */
+    }
+
+    h1 {
+        font-size: 24px; /* Размер заголовка */
     }
 
     /* Стили для страницы манхвы */
@@ -31,7 +36,7 @@
     }
 
     .manga-page {
-        max-width: 800px;
+        max-width: 100%; /* Манга занимает всю ширину контейнера */
         margin: 0 auto;
         display: block;
     }
@@ -55,10 +60,10 @@
     }
 
     .navigation button {
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 8px 16px; /* Меньше отступы для кнопок навигации */
+        font-size: 14px;  /* Меньший размер шрифта для кнопок навигации */
         cursor: pointer;
-        margin: 0 5px;
+        margin: 0 2px; /* Меньшие отступы между кнопками */
         background-color: var(--button-bg);
         border: none;
         border-radius: 5px;
@@ -68,7 +73,7 @@
     /* Стили для содержания */
     #content-list {
         display: none;
-        position: absolute;
+        position: fixed; /* Исправлено на fixed */
         top: 0;
         left: 0;
         width: 100%;
@@ -114,6 +119,14 @@
     nav {
         transition: transform 0.3s ease;
         background-color: var(--bg-color);
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow-y: auto;
+        padding-top: 60px; /* Отступ от верхнего бара */
+        z-index: 1000;
     }
 
     nav a {
@@ -128,30 +141,132 @@
     .content-wrapper {
         transition: margin-left 0.3s ease;
         margin-left: 250px; /* Ширина меню */
+        padding-top: 60px; /* Отступ от верхнего бара */
     }
 
     body.fullscreen-active .content-wrapper {
         margin-left: 0;
+        padding-top: 60px;
     }
 
     /* Стили для полноэкранного режима */
-    body.fullscreen-active .manga-container { /* Добавлено */
-        width: 100%; /* Добавлено */
+    body.fullscreen-active .manga-container {
+        width: 100%;
     }
 
     body.fullscreen-active .manga-page {
-        max-width: 100%; /* Изменено */
+        max-width: 100%;
+        height: auto; /* Автоматическая высота для пропорционального масштабирования */
+    }
+
+    /* Стили для top-bar */
+    .top-bar {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .top-bar-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo-main {
+        margin-right: 20px;
+    }
+
+    .search-box {
+        display: flex;
+        flex-grow: 1;
+        margin-right: 20px;
+    }
+
+    .search-box input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 5px;
+    }
+
+    .search-box button {
+        background-color: var(--button-bg);
+        color: var(--text-color);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Стили для логотипа и меню toggle */
+    .logo-main button {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .logo-main img {
+        height: 40px; /* Adjust as needed */
+    }
+
+    /* Дополнительные стили для профиля и входа */
+    #login-link, #profile-container {
+        margin-left: auto;
     }
 
     /* Стили для мобильных устройств */
     @media (max-width: 600px) {
+        body {
+            font-size: 14px; /* Меньший размер шрифта для мобильных */
+        }
+
+        h1 {
+            font-size: 20px; /* Меньший размер заголовка для мобильных */
+        }
+
         .manga-page {
             max-width: 100%;
+            height: auto; /*  Автоматическая высота для пропорционального масштабирования */
         }
 
         .navigation button {
-            padding: 8px 16px;
-            font-size: 14px;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .top-bar {
+            padding: 5px;
+        }
+
+        .search-box {
+            display: none; /* Hide search box on small screens */
+        }
+
+        /* Меню занимает весь экран */
+        nav {
+            width: 100%;
+            padding-top: 50px; /* Отступ под top-bar */
+        }
+
+        /* Убираем отступ для контента */
+        .content-wrapper {
+            margin-left: 0;
+            padding-top: 50px;
+        }
+
+        .logo-main button {
+            font-size: 16px;
         }
     }
 </style>
