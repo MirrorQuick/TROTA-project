@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Победи меня, пожалуйста - Глава 1</title>
+    <meta name="description" content="Читайте манхву 'Победи меня, пожалуйста' онлайн. Глава 1.">
+    <meta name="keywords" content="манхва, победи меня, пожалуйста, глава 1, онлайн, читать, вебтун">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+    /* Цвета на основе скриншота */
+    :root {
+        --bg-color: #181A2A; /* Темно-синий фон */
+        --text-color: #DCDCDC; /* Сероватый текст */
+        --highlight-color: #98C379; /* Зеленоватый для выделения */
+        --button-bg: #3E4451; /* Фон кнопок */
+    }
+
+    /* Общие стили */
+    body {
+        color: var(--text-color);
+    }
+
+    /* Стили для страницы манхвы */
+    .manga-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .manga-page {
+        max-width: 800px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Стили для навигации */
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(var(--bg-color), 0.8);
+        padding: 10px 0;
+        z-index: 999;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+
+    .navigation:hover {
+        opacity: 1;
+    }
+
+    .navigation button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0 5px;
+        background-color: var(--button-bg);
+        border: none;
+        border-radius: 5px;
+        color: var(--text-color);
+    }
+
+    /* Стили для содержания */
+    #content-list {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(var(--bg-color), 0.9);
+        z-index: 1001;
+        overflow-y: auto;
+        text-align: left;
+        padding: 20px;
+    }
+
+    #content-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #content-list li {
+        margin-bottom: 10px;
+    }
+
+    #content-list a {
+        text-decoration: none;
+        color: var(--text-color);
+        display: block;
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #content-list .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: var(--button-bg);
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        color: var(--text-color);
+    }
+
+    /* Стили для меню */
+    nav {
+        transition: transform 0.3s ease;
+        background-color: var(--bg-color);
+    }
+
+    nav a {
+        color: var(--text-color);
+    }
+
+    body.fullscreen-active nav {
+        transform: translateX(-100%);
+    }
+
+    /* Стили для основного контента */
+    .content-wrapper {
+        transition: margin-left 0.3s ease;
+        margin-left: 250px; /* Ширина меню */
+    }
+
+    body.fullscreen-active .content-wrapper {
+        margin-left: 0;
+    }
+
+    /* Стили для полноэкранного режима */
+    body.fullscreen-active .manga-container { /* Добавлено */
+        width: 100%; /* Добавлено */
+    }
+
+    body.fullscreen-active .manga-page {
+        max-width: 100%; /* Изменено */
+    }
+
+    /* Стили для мобильных устройств */
+    @media (max-width: 600px) {
+        .manga-page {
+            max-width: 100%;
+        }
+
+        .navigation button {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <div class="logo-main">
+                    <button class="menu-toggle">Меню</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск">
+                    <button type="submit">
+                        <img src="images/icons/search.png" alt="Поиск">
+                    </button>
+                </div>
+                <a href="#" id="login-link" style="display: inline;">Войти</a>
+                <div id="profile-container" style="display: none;">
+                    <div class="profile-circle">
+                        <img id="profile-image" style="display: none;" src="" alt="Ваш профиль">
+                    </div>
+                    <span id="profile-name" style="display: none;"></span>
+                    <button id="logout-button" style="display: none;">Выйти</button>
+                    <button type="button" id="download-profile" style="display: none;">Скачать профиль</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <nav>
+            <ul class="menu">
+                <li class="fade-in"><a href="index.html"><img src="images\logo.png" alt="Главная"><span>Главная</span></a></li>
+                <li class="fade-in"><a href="manga.html"><img src="images\manga.png" alt=""><span>Манга</span></a></li>
+                <li class="fade-in"><a href="series.html"><img src="images/icons/series.png" alt="Серии"><span>Серии</span></a></li>
+                <li class="fade-in"><a href="news.html"><img src="images/icons/news.png" alt="Новости"><span>Новости</span></a></li>
+                <li class="fade-in"><a href="trotapedia.html"><img src="images/icons/wiki.png" alt="Тротапедия"><span>Тротапедия</span></a></li>
+                <li class="fade-in"><a href="books.html"><img src="images/icons/books.png" alt="Книги"><span>Книги</span></a></li>
+                <li class="fade-in"><a href="songs.html"><img src="images/icons/songs.png" alt="Песни"><span>Песни</span></a></li>
+                <li class="fade-in"><a href="fanzone.html"><img src="images/icons/fanzone.png" alt="Фан-зона"><span>Фан-зона</span></a></li>
+                <li class="fade-in"><a href="games.html"><img src="images/icons/games.png" alt="Игры"><span>Игры</span></a></li>
+                <li class="fade-in"><a href="https://trota-project.store/"><img src="images/icons/merch.gif" alt="Мерч"><span>Мерч</span></a></li>
+                <li class="fade-in"><a href="community.html"><img src="images/icons/community.png" alt=" Чайная"><span> Чайная</span></a></li>
+                <li class="fade-in"><a href="schedule.html"><img src="images/icons/schedule.gif" alt="
+График выхода"><span>График</span></a></li>
+                <li class="fade-in"><a href="gallery.html"><img src="images/icons/gallery.png" alt="Галерея"><span>Галерея</span></a></li>
+                <li class="fade-in"><a href="feedback.html"><img src="images/icons/feedback.png" alt="Обратная связь"><span>Обратная связь</span></a></li>
+                <li class="fade-in"><a href="
+                    creators.html"><img src="images/icons/creators.gif" alt="О создателях"><span>Создатели</span></a></li>
+                </ul>
+            </nav>
+
+        <div class="main-content">
+            <div class="manga-container">
+                <h1>Победи меня, пожалуйста - Глава 1</h1>
+
+                <div id="image-container">
+                    <img id="manga-page" class="manga-page" src="" alt="Страница манхвы">
+                </div>
+
+                <div id="content-list">
+                    <button class="close-button" id="close-content">X</button>
+                    <h2>Содержание</h2>
+                    <ul>
+                        <li><a href="#">Глава 1</a></li>
+                        <li><a href="#">Глава 2</a></li>
+                        <li><a href="#">Глава 3</a></li>
+                        <!-- Добавьте остальные главы -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="social-links">
+        <table>
+            <tr>
+                <td><a href="https://vk.com/trota_project"><img src="images\icons\vk.png" alt="ВКонтакте"><span>ВКонтакте</span></a></td>
+                <td><a href="https://t.me/TROTA_project"><img src="images\icons\tg.png" alt="Telegram"><span>Telegram</span></a></td>
+                <td><a href="https://www.youtube.com/@TROTA_project"><img src="images\icons\youtube.png" alt="YouTube"><span>YouTube</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="https://boosty.to/trota_project"><img src="images\icons\boosty.png" alt="Boosty"><span>Boosty</span></a></td>
+                <td><a href="https://www.tiktok.com/@trota_project"><img src="images\icons\tiktok.png" alt="TikTok"><span>TikTok</span></a></td>
+                <td><a href="https://t.me/VicaTea"><img src="images\icons\autor.png" alt="Автор"><span>Автор</span></a></td>
+            </tr>
+        </table>
+        <br>
+        <p>© 2025 TROTA_project. Все права защищены.</p>
+    </footer>
+
+    <div class="navigation">
+        <button id="prev-button" style="background-color: #cccccc; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 0 5px; color: #333;">Предыдущая</button>
+        <button id="next-button" style="background-color: #cccccc; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 0 5px; color: #333;">Следующая</button>
+        <button id="content-button" style="background-color: #cccccc; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 0 5px; color: #333;">Содержание</button>
+    
+    </div>
+
+    <script>
+        const imageContainer = document.getElementById('image-container');
+        const mangaPage = document.getElementById('manga-page');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const contentButton = document.getElementById('content-button');
+        const contentList = document.getElementById('content-list');
+        const closeContentButton = document.getElementById('close-content');
+        const fullscreenButton = document.getElementById('fullscreen-button');
+        const chapterDirectory = "images/manga/ch1/";
+        let currentPage = 1;
+        const totalPages = 10;
+
+        function updateImage() {
+            const imageUrl = chapterDirectory + "Страница " + currentPage + ".png";
+            mangaPage.src = imageUrl;
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updateImage();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updateImage();
+            }
+        });
+
+        updateImage();
+
+        imageContainer.addEventListener('click', (event) => {
+            const containerWidth = imageContainer.offsetWidth;
+            const clickX = event.clientX - imageContainer.offsetLeft;
+
+            if (clickX < containerWidth / 2) {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateImage();
+                }
+            } else {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updateImage();
+                }
+            }
+        });
+
+        // Содержание
+        contentButton.addEventListener('click', () => {
+            contentList.style.display = 'block';
+        });
+
+        closeContentButton.addEventListener('click', () => {
+            contentList.style.display = 'none';
+        });
+
+        // Полноэкранный режим (только скрываем элементы)
+        fullscreenButton.addEventListener('click', () => {
+            document.body.classList.toggle('fullscreen-active'); // Добавляем/удаляем класс для fullscreen
+
+            // Если переходим в полноэкранный режим
+            if (document.body.classList.contains('fullscreen-active')) {
+                fullscreenButton.textContent = 'Вернуться'; // Изменяем текст кнопки
+            } else {
+                fullscreenButton.textContent = 'Во весь экран'; // Возвращаем исходный текст
+            }
+        });
+
+    </script>
+
+    <script src="js\main.js"></script>
+    <script src="js\replics.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>
