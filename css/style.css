@@ -1,9 +1,9 @@
 /* Общие стили */
 :root {
-    --primary-color: #181c27; /* Фон для header, footer, menu */
-    --secondary-color: #a9c280; /* Обрамление кнопок, поиска и т.д. */
-    --background-color: #000512; /* Основной фон body */
-    --text-color: #f6e6c6; /* Основной цвет текста */
+    --primary-color: #13161f; /* Dark grey-blue, background */
+    --secondary-color: #ffffff; /* White, text */
+    --secondary-color: #83adec; /* Light tan or beige */
+    --text-color: #ffffff; /* White, text */
     --font-family: sans-serif;
 }
 
@@ -36,7 +36,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: #fffbd5; /* Светлее текст при наведении */
+    color: #83adec; /* Светлее текст при наведении */
 }
 
 ul {
@@ -377,7 +377,7 @@ main {
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    color: #f6e6c6; /* Желтый текст */
+    color: white; /* Желтый текст */
 }
 /* Общие стили */
 body {
@@ -385,7 +385,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     background-color: #000512; /* Синий фон */
-    color: #f6e6c6; /* Желтый текст */
+    color: white; /* Желтый текст */
 
 }
 dd p{
@@ -402,7 +402,7 @@ dd p{
     background-color: #12141a; /* Светло-серый фон */
     border: 1px solid #000000;
     border-radius: 29px;
-    color: #f0e2b4; /* Темно-серый цвет текста */
+    color: white; /* Темно-серый цвет текста */
 }
 /* Стили для больших кнопок */
 .main-buttons {
@@ -469,12 +469,12 @@ dd p{
 
 p {
     font-size: 15px;
-    color: #f6e6c6; /* Убедимся, что все параграфы желтые */
+    color: white; /* Убедимся, что все параграфы желтые */
 }
 
 li {
     font-size: 20px;
-    color: #f6e6c6; /* Убедимся, что все элементы списка желтые */
+    color: white; /* Убедимся, что все элементы списка желтые */
 }
 
 a {
@@ -498,7 +498,7 @@ footer {
     padding: 10px;
     text-align: center;
     margin-top: 20px;
-    color: #f6e6c6; /* Желтый текст в подвале */
+    color: white; /* Желтый текст в подвале */
 }
 
 .logo img {
@@ -780,7 +780,7 @@ main {
 }
 
 #copy-link-modal {
-    background-color: #fdee96; /* Оранжевый -> Желтый */
+    background-color: #83adec; /* Оранжевый -> Желтый */
     color: #34495e; /* Синий Текст */
     border: none;
     padding: 5px 10px;
@@ -825,7 +825,7 @@ main {
 .menu a:hover {
     transform: scale(1.1); /* Увеличение размера при наведении */
     background-color: #4e657a; /* Меняем цвет фона при наведении */
-    color: #fffbd5; /* Меняем цвет текста при наведении */
+    color: #7791d8; /* Меняем цвет текста при наведении */
 }
 .video-item img {
     transition: transform 0.3s ease;
